@@ -8,7 +8,7 @@ This folder contains utility scripts for handling datasets, including downloadin
 
 - **Description**: A Python script to download Kaggle datasets or competition data seamlessly, supporting Google Colab, local Linux/Mac, and Windows environments.
 - **Path**: [`data/datasets/kaggle_data.py`](kaggle_data.py)
-- **Key Function**: `get_kaggle_data(json_path, data_name, is_competition=False, output_dir='data')`
+- **Key Function**: `get_kaggle_data(json_path, data_name, is_competition=False, output_dir='data/raw')`
 - **Example**:
 
   ```python
