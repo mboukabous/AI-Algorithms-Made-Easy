@@ -42,17 +42,13 @@ from sklearn.metrics import (root_mean_squared_error, mean_squared_error, r2_sco
 import joblib
 
 def main(args):
-    # Add the parent directory to the Python path
-    parent_dir = os.path.abspath(os.path.join(os.getcwd(), ".."))
-    sys.path.insert(0, parent_dir)
-
-    # Verify that the parent directory is in the Python path
-    print(f"Current sys.path:\n{sys.path}")
+    # Change to the root directory of the project
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    os.chdir(project_root)
+    sys.path.insert(0, project_root)
 
     # Import the hyperparameter tunine and the model modules
-    hyperparameter_tuning_model_path = f"utils.supervised_hyperparameter_tuning.hyperparameter_tuning_model"
-    hyperparameter_tuning_model = importlib.import_module(hyperparameter_tuning_model_path)
-    
+    from utils.supervised_hyperparameter_tuning import hyperparameter_tuning_model
     model_module_path = f"models.supervised.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
     
