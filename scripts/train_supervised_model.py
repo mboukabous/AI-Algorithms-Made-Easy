@@ -46,6 +46,9 @@ def main(args):
     parent_dir = os.path.abspath(os.path.join(os.getcwd(), ".."))
     sys.path.insert(0, parent_dir)
 
+    # Verify that the parent directory is in the Python path
+    print(f"Current sys.path:\n{sys.path}")
+
     # Import the hyperparameter tunine and the model modules
     hyperparameter_tuning_model_path = f"utils.supervised_hyperparameter_tuning.hyperparameter_tuning_model"
     hyperparameter_tuning_model = importlib.import_module(hyperparameter_tuning_model_path)
