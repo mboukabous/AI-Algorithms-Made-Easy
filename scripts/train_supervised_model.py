@@ -42,10 +42,10 @@ import joblib
 
 def main(args):
     # Import the hyperparameter tunine and the model modules
-    model_module_path = f"utils.supervised_hyperparameter_tuning.hyperparameter_tuning_model"
-    model_module = importlib.import_module(model_module_path)
+    hyperparameter_tuning_model_path = f"utils.supervised_hyperparameter_tuning.hyperparameter_tuning_model"
+    hyperparameter_tuning_model = importlib.import_module(model_module_path)
     
-    model_module_path = f"models.supervised.regression.{args.model_module}"
+    model_module_path = f"models.supervised.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
     
     # Get the model estimator, parameters grid, and the scoring metric
