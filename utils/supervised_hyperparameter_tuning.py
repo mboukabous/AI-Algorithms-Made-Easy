@@ -58,7 +58,7 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
     # Define preprocessing for categorical data
     categorical_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
-        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))  # Set sparse_output=False
     ])
 
     # Create preprocessing pipeline
