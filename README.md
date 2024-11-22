@@ -39,17 +39,41 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 
 *This project is currently under development. Stay tuned for updates!*
 
-### Supervised Learning
-
+### Supervised Learning (Scikit-Learn)
+#### Regression
 - Linear Regression
-- Logistic Regression
-- Decision Trees (DTs)
-- Random Forests (RF)
-- Support Vector Machines (SVM)
-- K-Nearest Neighbors (K-NN)
-- Gradient Boosting Machines (GBMs)
-- Multilayer Perceptrons (MLP)
+- Ridge Regression
+- Lasso Regression
+- ElasticNet Regression
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- AdaBoost
+- XGBoost
+- LightGBM
+- CatBoost
+- Support Vector Regressor (SVR)
+- K-Nearest Neighbors (KNN) Regressor
+- Extra Trees Regressor
+- Multilayer Perceptron (MLP) Regressor
 
+#### Classification
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- AdaBoost
+- XGBoost
+- LightGBM
+- CatBoost
+- Support Vector Classifier (SVC)
+- K-Nearest Neighbors (KNN) Classifier
+- Extra Trees Classifier
+- Multilayer Perceptron (MLP) Classifier
+- Naive Bayes
+- Linear Discriminant Analysis (LDA)
+- Quadratic Discriminant Analysis (QDA)
+  
 ### Unsupervised Learning
 
 - K-Means Clustering
