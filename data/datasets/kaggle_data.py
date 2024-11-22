@@ -13,7 +13,7 @@ Environment Detection:
     - Windows: Uses `C:\\Users\\<Username>\\.kaggle\\kaggle.json`.
 
 Functions:
-    get_kaggle_data(json_path: str, data_name: str, is_competition: bool = False, output_dir: str = "data") -> str
+    get_kaggle_data(json_path: str, data_name: str, is_competition: bool = False, output_dir: str = "data/raw") -> str
 """
 
 import os
@@ -22,7 +22,7 @@ import sys
 import shutil
 import platform
 
-def get_kaggle_data(json_path: str, data_name: str, is_competition: bool = False, output_dir: str = "data") -> str:
+def get_kaggle_data(json_path: str, data_name: str, is_competition: bool = False, output_dir: str = "data/raw") -> str:
     """
     Downloads a Kaggle dataset or competition data using the Kaggle API in Google Colab, local Linux/Mac, or Windows environment.
 
