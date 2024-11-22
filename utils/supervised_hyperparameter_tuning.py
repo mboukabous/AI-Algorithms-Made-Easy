@@ -20,7 +20,7 @@ Example Usage:
         'model__n_estimators': [100, 200],
         'model__max_depth': [None, 10, 20]
     }
-    best_model, best_params = hyperparameter_tuning_model(X, y, RandomForestRegressor(), param_grid, cv=5, scoring='neg_mean_squared_error')
+    best_model, best_params = hyperparameter_tuning_model(X, y, RandomForestRegressor(), param_grid, preprocessor, cv=5, scoring='neg_mean_squared_error')
 """
 
 from sklearn.compose import ColumnTransformer
@@ -29,7 +29,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import GridSearchCV
 
-def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None):
+def hyperparameter_tuning_model(X, y, estimator, param_grid, preprocessor, cv=5, scoring=None):
     """
     Performs hyperparameter tuning for a given model using GridSearchCV with preprocessing.
 
@@ -60,14 +60,6 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
         ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
         ('onehot', OneHotEncoder(handle_unknown='ignore'))
     ])
-
-    # Create preprocessing pipeline
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ('num', numerical_transformer, numerical_cols),
-            ('cat', categorical_transformer, categorical_cols)
-        ]
-    )
 
     # Create a pipeline that combines preprocessing and the estimator
     pipeline = Pipeline(steps=[
