@@ -136,6 +136,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - **models/**: Contains all the AI algorithm implementations, organized by category.
 - **data/**: Includes datasets and data preprocessing utilities.
 - **utils/**: Utility scripts and helper functions.
+- **scripts/**: Executable scripts for training, testing, and other tasks.
 - **interfaces/**: Interactive applications using Gradio and web interfaces.
 - **notebooks/**: Jupyter notebooks for tutorials and demonstrations.
 - **deploy/**: Scripts and instructions for deploying models.
