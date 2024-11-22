@@ -59,7 +59,7 @@ def main(args):
     model_name = estimator.__class__.__name__
 
     # Set default paths if not provided
-    args.model_path = args.model_path or os.path.join('models', model_name)
+    args.model_path = args.model_path or os.path.join('saved_models', model_name)
     args.results_path = args.results_path or os.path.join('results', model_name)
     os.makedirs(args.results_path, exist_ok=True)
 
