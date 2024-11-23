@@ -41,21 +41,21 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 
 ### Supervised Learning (Scikit-Learn)
 #### Regression
-- Linear Regression
-- Ridge Regression
-- Lasso Regression
-- ElasticNet Regression
-- Decision Tree
-- Random Forest
-- Gradient Boosting
-- AdaBoost
-- XGBoost
-- LightGBM
-- CatBoost
-- Support Vector Regressor (SVR)
-- K-Nearest Neighbors (KNN) Regressor
-- Extra Trees Regressor
-- Multilayer Perceptron (MLP) Regressor
+- [Linear Regression](models/supervised/regression/linear_regression.py)
+- [Ridge Regression](models/supervised/regression/ridge_regression.py)
+- [Lasso Regression](models/supervised/regression/lasso_regression.py)
+- [ElasticNet Regression](models/supervised/regression/elasticnet_regression.py)
+- [Decision Tree](models/supervised/regression/decision_tree_regressor.py)
+- [Random Forest](models/supervised/regression/random_forest_regressor.py)
+- [Gradient Boosting](models/supervised/regression/gradient_boosting_regressor.py)
+- [AdaBoost](models/supervised/regression/adaboost_regressor.py)
+- [XGBoost](models/supervised/regression/xgboost_regressor.py)
+- [LightGBM](models/supervised/regression/lightgbm_regressor.py)
+- [CatBoost](models/supervised/regression/catboost_regressor.py)
+- [Support Vector Regressor (SVR)](models/supervised/regression/support_vector_regressor.py)
+- [K-Nearest Neighbors (KNN) Regressor](models/supervised/regression/knn_regressor.py)
+- [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
+- [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
 #### Classification
 - Logistic Regression
