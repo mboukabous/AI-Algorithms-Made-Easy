@@ -7,8 +7,8 @@ regression), hyperparameter tuning, model evaluation, and saving
 of models, metrics, and visualizations.
 
 Usage:
-    python train_model.py --model_module MODEL_MODULE --data_path DATA_PATH
-                          --data_name DATA_NAME.csv --target_variable TARGET_VARIABLE
+    python train_model.py --model_module MODEL_MODULE --data_path DATA_PATH/DATA_NAME.csv
+                          --target_variable TARGET_VARIABLE
 
 Optional arguments:
     --test_size TEST_SIZE
@@ -23,7 +23,7 @@ Optional arguments:
 
 Example:
     python train_model.py --model_module linear_regression
-                          --data_path data/house_prices --data_name train.csv
+                          --data_path data/house_prices/train.csv
                           --target_variable SalePrice --drop_columns Id
                           --log_transform --visualize
 """
@@ -64,7 +64,7 @@ def main(args):
     os.makedirs(args.results_path, exist_ok=True)
 
     # Load the dataset
-    df = pd.read_csv(os.path.join(args.data_path, args.data_name))
+    df = pd.read_csv(os.path.join(args.data_path))
 
     # Drop specified columns
     if args.drop_columns:
@@ -225,9 +225,7 @@ if __name__ == "__main__":
                         help='Name of the model module to import.')
     # Data arguments
     parser.add_argument('--data_path', type=str, required=True,
-                        help='Path to the dataset directory.')
-    parser.add_argument('--data_name', type=str, required=True,
-                        help='Name of the data file.')
+                        help='Path to the dataset directory including data name.')
     parser.add_argument('--target_variable', type=str, required=True,
                         help='Name of the target variable.')
     parser.add_argument('--drop_columns', type=str, default='',
