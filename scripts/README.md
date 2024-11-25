@@ -22,15 +22,14 @@ A script for training supervised learning models (both regression and classifica
 
 ```bash
 python train_model.py --model_module MODEL_MODULE \
-    --data_path DATA_PATH --data_name DATA_NAME.csv \
+    --data_path DATA_PATH/DATA_NAME.csv \
     --target_variable TARGET_VARIABLE [OPTIONS]
 
 ```
 
 - **Required Arguments:**
 - `model_module`: Name of the model module to import (e.g., `linear_regression`).
-- `data_path`: Path to the dataset directory.
-- `data_name`: Name of the data file.
+- `data_path`: Path to the dataset directory including the data file name.
 - `target_variable`: Name of the target variable.
 
 - **Optional Arguments:**
@@ -48,7 +47,7 @@ python train_model.py --model_module MODEL_MODULE \
 
 ```bash
 python train_model.py --model_module random_forest_regressor \
-    --data_path data/house_prices --data_name train.csv \
+    --data_path data/house_prices/train.csv \
     --target_variable SalePrice --drop_columns Id \
     --log_transform --visualize
 ```
