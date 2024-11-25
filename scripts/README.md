@@ -29,7 +29,7 @@ python train_model.py --model_module MODEL_MODULE \
 
 - **Required Arguments:**
 - `model_module`: Name of the model module to import (e.g., `linear_regression`).
-- `data_path`: Path to the dataset directory including the data file name.
+- `data_path`: Path to the dataset directory, including the data file name.
 - `target_variable`: Name of the target variable.
 
 - **Optional Arguments:**
