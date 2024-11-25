@@ -6,7 +6,7 @@ This directory contains executable scripts for training, testing, and other task
 
 - [`train_supervised_model.py`](#train_supervised_model.py)
 
-### `train_model.py`
+### `train_supervised_model.py`
 
 A script for training supervised learning models (both regression and classification) using scikit-learn. It handles data loading, preprocessing, optional log transformation, hyperparameter tuning, model evaluation, and saving of models, metrics, and visualizations.
 
