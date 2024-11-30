@@ -47,7 +47,7 @@ def main(args):
     os.chdir(project_root)
     sys.path.insert(0, project_root)
 
-    # Import the hyperparameter tunine and the model modules
+    # Import the hyperparameter tuning and the model modules
     from utils.supervised_hyperparameter_tuning import hyperparameter_tuning_model
     model_module_path = f"models.supervised.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
