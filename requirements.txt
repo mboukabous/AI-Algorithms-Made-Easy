@@ -8,3 +8,4 @@ catboost==1.2.7
 dask[dataframe]==2024.10.0
 xgboost==2.1.2
 lightgbm==4.5.0
+gradio==5.7.1
