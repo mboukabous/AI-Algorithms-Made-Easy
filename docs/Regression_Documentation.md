@@ -174,7 +174,7 @@ python scripts/train_supervised_model.py \
     --log_transform \
     --cv_folds 5 \
     --scoring_metric 'neg_root_mean_squared_error' \
-    --model_path 'models/LinearRegression' \
+    --model_path 'saved_models/LinearRegression' \
     --results_path 'results/LinearRegression' \
     --visualize
 ```
@@ -190,7 +190,7 @@ python scripts/train_supervised_model.py \
 - `--log_transform`: Apply log transformation to the target variable (regression only).
 - `--cv_folds`: Number of cross-validation folds (default: `5`).
 - `--scoring_metric`: Scoring metric for model evaluation (e.g., `neg_root_mean_squared_error`, `accuracy`).
-- `--model_path`: Path to save the trained model (e.g., `models/LinearRegression`).
+- `--model_path`: Path to save the trained model (e.g., `saved_models/LinearRegression`).
 - `--results_path`: Path to save results and metrics (e.g., `results/LinearRegression`).
 - `--visualize`: Generate and save visualizations (e.g., actual vs. predicted plots for regression).
 - `--drop_columns`: Comma-separated column names to drop from the dataset (optional).
@@ -225,7 +225,7 @@ python scripts/train_supervised_model.py \
     --random_state 42 \
     --cv_folds 5 \
     --scoring_metric 'neg_mean_absolute_error' \
-    --model_path 'models/LinearRegression' \
+    --model_path 'saved_models/LinearRegression' \
     --results_path 'results/LinearRegression' \
     --visualize
 ```
