@@ -106,7 +106,7 @@ def main(args):
     # Perform hyperparameter tuning
     best_model, best_params = regression_hyperparameter_tuning(
         X_train, y_train_transformed, estimator, param_grid,
-        cv=args.cv_folds, scoring=scoring_metric, apply_log_transform=args.log_transform)
+        cv=args.cv_folds, scoring=scoring_metric)
 
     # Evaluate the best model on the test set
     y_pred_transformed = best_model.predict(X_test)
