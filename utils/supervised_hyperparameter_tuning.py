@@ -26,9 +26,8 @@ Example Usage:
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler, RobustScaler
-from sklearn.model_selection import GridSearchCV
-import numpy as np
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
+from sklearn.model_selection import GridSearchCV, KFold
 
 def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None):
     """
@@ -39,7 +38,7 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
         y (pd.Series): Target variable.
         estimator: The scikit-learn regressor to use (e.g., LinearRegression(), RandomForestRegressor()).
         param_grid (dict): Hyperparameter grid for GridSearchCV.
-        cv (int): Number of cross-validation folds.
+        cv (int or cross-validation generator): Number of cross-validation folds or a cross-validation generator.
         scoring (str or None): Scoring metric to use.
 
     Returns:
@@ -72,7 +71,7 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
         # Use OneHotEncoder for other models
         categorical_transformer = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
-            ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
+            ('onehot', OneHotEncoder(handle_unknown='ignore', sparse=False))
         ])
 
     # Create preprocessing pipeline
@@ -83,21 +82,15 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
         ]
     )
 
-    # Check if log transformation is needed for y
-    # Optionally, you can include a parameter to control this
-    y_transformed = y.copy()
-    if (y <= 0).any():
-        # If y has non-positive values, skip log transformation
-        apply_log = False
-    else:
-        apply_log = True
-        y_transformed = np.log1p(y)
-
     # Create a pipeline that combines preprocessing and the estimator
     pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('model', estimator)
     ])
+
+    # Define cross-validation strategy
+    if isinstance(cv, int):
+        cv = KFold(n_splits=cv, shuffle=True, random_state=42)
 
     # Initialize GridSearchCV
     grid_search = GridSearchCV(
@@ -109,7 +102,7 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
     )
 
     # Perform Grid Search
-    grid_search.fit(X, y_transformed)
+    grid_search.fit(X, y)
 
     # Get the best model and parameters
     best_model = grid_search.best_estimator_
