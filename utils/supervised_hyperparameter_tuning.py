@@ -29,7 +29,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 from sklearn.model_selection import GridSearchCV, KFold
 
-def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None):
+def regression_hyperparameter_tuning(X, y, estimator, param_grid, cv=5, scoring=None):
     """
     Performs hyperparameter tuning for a given regression model using GridSearchCV with preprocessing.
 
