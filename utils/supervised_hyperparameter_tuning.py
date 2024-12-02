@@ -1,11 +1,11 @@
-
 """
-This module provides a function for hyperparameter tuning with preprocessing using scikit-learn's GridSearchCV.
+This module provides a function for hyperparameter tuning with preprocessing using scikit-learn's GridSearchCV specifically for regression models.
 
 Features:
 - Handles numerical and categorical preprocessing using pipelines.
-- Automates hyperparameter tuning for any scikit-learn estimator.
+- Automates hyperparameter tuning for any scikit-learn regressor.
 - Uses GridSearchCV for cross-validation and hyperparameter search.
+- Applies algorithm-specific preprocessing when necessary.
 
 Functions:
     - hyperparameter_tuning_model: Performs hyperparameter tuning on a given dataset and estimator.
@@ -17,7 +17,7 @@ Example Usage:
     X = ...  # Your feature DataFrame
     y = ...  # Your target variable
     param_grid = {
-        'model__n_estimators': [100, 200],
+        'model__n_estimators': [100, 200, 500],
         'model__max_depth': [None, 10, 20]
     }
     best_model, best_params = hyperparameter_tuning_model(X, y, RandomForestRegressor(), param_grid, cv=5, scoring='neg_mean_squared_error')
@@ -26,17 +26,18 @@ Example Usage:
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler, RobustScaler
 from sklearn.model_selection import GridSearchCV
+import numpy as np
 
 def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None):
     """
-    Performs hyperparameter tuning for a given model using GridSearchCV with preprocessing.
+    Performs hyperparameter tuning for a given regression model using GridSearchCV with preprocessing.
 
     Args:
         X (pd.DataFrame): Features.
         y (pd.Series): Target variable.
-        estimator: The scikit-learn estimator to use (e.g., LinearRegression(), RandomForestRegressor()).
+        estimator: The scikit-learn regressor to use (e.g., LinearRegression(), RandomForestRegressor()).
         param_grid (dict): Hyperparameter grid for GridSearchCV.
         cv (int): Number of cross-validation folds.
         scoring (str or None): Scoring metric to use.
@@ -51,15 +52,28 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
 
     # Define preprocessing for numerical data
     numerical_transformer = Pipeline(steps=[
-        ('imputer', SimpleImputer()),
+        ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler())
     ])
 
-    # Define preprocessing for categorical data
-    categorical_transformer = Pipeline(steps=[
-        ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
-        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))  # Set sparse_output=False
-    ])
+    # Conditional preprocessing for categorical data
+    estimator_name = estimator.__class__.__name__
+
+    if estimator_name in [
+        'DecisionTreeRegressor', 'RandomForestRegressor', 'ExtraTreesRegressor',
+        'GradientBoostingRegressor', 'XGBRegressor', 'LGBMRegressor', 'CatBoostRegressor'
+    ]:
+        # Use Ordinal Encoding for tree-based models
+        categorical_transformer = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
+            ('ordinal_encoder', OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1))
+        ])
+    else:
+        # Use OneHotEncoder for other models
+        categorical_transformer = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='constant', fill_value='Missing')),
+            ('onehot', OneHotEncoder(handle_unknown='ignore', sparse=False))
+        ])
 
     # Create preprocessing pipeline
     preprocessor = ColumnTransformer(
@@ -68,6 +82,16 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
             ('cat', categorical_transformer, categorical_cols)
         ]
     )
+
+    # Check if log transformation is needed for y
+    # Optionally, you can include a parameter to control this
+    y_transformed = y.copy()
+    if (y <= 0).any():
+        # If y has non-positive values, skip log transformation
+        apply_log = False
+    else:
+        apply_log = True
+        y_transformed = np.log1p(y)
 
     # Create a pipeline that combines preprocessing and the estimator
     pipeline = Pipeline(steps=[
@@ -85,13 +109,13 @@ def hyperparameter_tuning_model(X, y, estimator, param_grid, cv=5, scoring=None)
     )
 
     # Perform Grid Search
-    grid_search.fit(X, y)
+    grid_search.fit(X, y_transformed)
 
     # Get the best model and parameters
     best_model = grid_search.best_estimator_
     best_params = grid_search.best_params_
 
-    print(f"Best Hyperparameters for {estimator.__class__.__name__}:")
+    print(f"Best Hyperparameters for {estimator_name}:")
     for param_name in sorted(best_params.keys()):
         print(f"{param_name}: {best_params[param_name]}")
 
