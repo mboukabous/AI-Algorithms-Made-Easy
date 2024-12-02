@@ -46,7 +46,7 @@ def main(args):
 
     # Import the hyperparameter tuning and the model modules
     from utils.supervised_hyperparameter_tuning import regression_hyperparameter_tuning
-    model_module_path = f"models.supervised.regression.{args.model_module}"
+    model_module_path = f"models.supervised.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
     
     # Get the model estimator, parameters grid, and the scoring metric
