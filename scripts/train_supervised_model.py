@@ -1,4 +1,3 @@
-
 """
 This script trains supervised learning models using scikit-learn.
 It handles both regression and classification tasks, including
