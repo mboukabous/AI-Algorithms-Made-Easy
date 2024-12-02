@@ -48,7 +48,7 @@ def main(args):
     sys.path.insert(0, project_root)
 
     # Import the hyperparameter tuning and the model modules
-    from utils.supervised_hyperparameter_tuning import hyperparameter_tuning_model
+    from utils.supervised_hyperparameter_tuning import regression_hyperparameter_tuning
     model_module_path = f"models.supervised.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
     
@@ -120,7 +120,7 @@ def main(args):
         y_test_transformed = y_test
 
     # Perform hyperparameter tuning
-    best_model, best_params = hyperparameter_tuning_model(
+    best_model, best_params = regression_hyperparameter_tuning(
         X_train, y_train_transformed, estimator, param_grid,
         cv=args.cv_folds, scoring=scoring_metric)
 
