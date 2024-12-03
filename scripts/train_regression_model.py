@@ -37,6 +37,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_score, mean_absolute_error
 import joblib
+from timeit import default_timer as timer
 
 def main(args):
     # Change to the root directory of the project
@@ -103,10 +104,17 @@ def main(args):
         y_train_transformed = y_train
         y_test_transformed = y_test
 
+    # Start the timer
+    start_time = timer()
+
     # Perform hyperparameter tuning
     best_model, best_params = regression_hyperparameter_tuning(
         X_train, y_train_transformed, estimator, param_grid,
         cv=args.cv_folds, scoring=scoring_metric)
+
+    # End the timer and calculate how long it took
+    end_time = timer()
+    train_time = end_time-start_time
 
     # Evaluate the best model on the test set
     y_pred_transformed = best_model.predict(X_test)
@@ -135,8 +143,9 @@ def main(args):
     print(f"- R² Score: {r2:.4f}")
     print(f"- MAE: {mae:.4f}")
     print(f"- MSE: {mse:.4f}")
+    print(f"- Training time: {train_time:.4f} seconds")
     # Save metrics
-    metrics = {'RMSE': [rmse], 'R2': [r2], 'MAE': [mae], 'MSE': [mse]}
+    metrics = {'RMSE': [rmse], 'R2': [r2], 'MAE': [mae], 'MSE': [mse], 'train_time': [train_time]}
 
     # Save metrics to CSV
     results_df = pd.DataFrame(metrics)
