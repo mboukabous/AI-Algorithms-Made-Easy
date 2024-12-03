@@ -4,24 +4,23 @@ This directory contains executable scripts for training, testing, and other task
 
 ## Contents
 
-- [`train_supervised_model.py`](#train_supervised_model.py)
+- [`train_regression_model.py`](#train_regression_model.py)
 
-### `train_supervised_model.py`
+### `train_regression_model.py`
 
-A script for training supervised learning models (both regression and classification) using scikit-learn. It handles data loading, preprocessing, optional log transformation, hyperparameter tuning, model evaluation, and saving of models, metrics, and visualizations.
+A script for training supervised learning regression models using scikit-learn. It handles data loading, preprocessing, optional log transformation, hyperparameter tuning, model evaluation, and saving of models, metrics, and visualizations.
 
 #### Features
 
-- Supports various models defined in the `models/supervised` directory.
+- Supports various regression models defined in the `models/supervised/regression` directory.
 - Performs hyperparameter tuning using grid search cross-validation.
-- Handles both regression and classification tasks.
 - Saves trained models and evaluation metrics.
 - Generates visualizations if specified.
 
 #### Usage
 
 ```bash
-python train_model.py --model_module MODEL_MODULE \
+python train_regression_model.py --model_module MODEL_MODULE \
     --data_path DATA_PATH/DATA_NAME.csv \
     --target_variable TARGET_VARIABLE [OPTIONS]
 
@@ -46,7 +45,7 @@ python train_model.py --model_module MODEL_MODULE \
 #### Usage Example
 
 ```bash
-python train_model.py --model_module random_forest_regressor \
+python train_regression_model.py --model_module linear_regression \
     --data_path data/house_prices/train.csv \
     --target_variable SalePrice --drop_columns Id \
     --log_transform --visualize
