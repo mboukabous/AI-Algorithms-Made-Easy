@@ -12,7 +12,7 @@ This script contains functions for performing hyperparameter tuning on supervise
 
 #### Functions
 
-- **`hyperparameter_tuning_model(X_train, y_train, estimator, param_grid, cv=5, scoring=None)`**
+- **`regression_hyperparameter_tuning(X_train, y_train, estimator, param_grid, cv=5, scoring=None)`**
 
   Performs hyperparameter tuning using grid search cross-validation.
 
@@ -31,7 +31,7 @@ This script contains functions for performing hyperparameter tuning on supervise
 #### Usage Example
 
 ```python
-from utils.supervised_hyperparameter_tuning import hyperparameter_tuning_model
+from utils.supervised_hyperparameter_tuning import regression_hyperparameter_tuning
 from sklearn.linear_model import LinearRegression
 
 # Define estimator and parameter grid
@@ -42,4 +42,4 @@ param_grid = {
 }
 
 # Perform hyperparameter tuning
-best_model, best_params = hyperparameter_tuning_model(X_train, y_train, estimator, param_grid)
+best_model, best_params = regression_hyperparameter_tuning(X_train, y_train, estimator, param_grid)
