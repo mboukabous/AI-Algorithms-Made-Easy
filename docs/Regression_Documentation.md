@@ -44,6 +44,7 @@ catboost==1.2.7
 dask[dataframe]==2024.10.0
 xgboost==2.1.2
 lightgbm==4.5.0
+gradio==5.7.1
 ```
 
 ### Project Structure
@@ -77,7 +78,7 @@ project_root/
 │           ├── extra_trees_regressor.py
 │           └── mlp_regressor.py
 ├── scripts/
-│   └── train_supervised_model.py
+│   └── train_regression_model.py
 ├── utils/
 │   └── supervised_hyperparameter_tuning.py
 ├── saved_models/
@@ -150,7 +151,7 @@ To download the dataset using the Kaggle API, you need to have a Kaggle account 
 
 ## 4. Model Training and Evaluation
 
-The main script for training models is `scripts/train_supervised_model.py`. It handles:
+The main script for training models is `scripts/train_regression_model.py`. It handles:
 
 - Data loading and preprocessing.
 - Optional log transformation of the target variable.
@@ -164,8 +165,8 @@ The main script for training models is `scripts/train_supervised_model.py`. It h
 Use the following command to train a model:
 
 ```bash
-python scripts/train_supervised_model.py \
-    --model_module 'regression.linear_regression' \
+python scripts/train_regression_model.py \
+    --model_module 'linear_regression' \
     --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
     --target_variable 'SalePrice' \
     --drop_columns 'Id' \
@@ -180,7 +181,7 @@ python scripts/train_supervised_model.py \
 ```
 
 **Required Command-Line Arguments:**
-- `--model_module`: Name of the model module to import (e.g., `regression.linear_regression`).
+- `--model_module`: Name of the model module to import (e.g., `linear_regression`).
 - `--data_path`: Path to the dataset directory, including the data file name.
 - `--target_variable`: Name of the target variable in your dataset.
 
@@ -202,10 +203,9 @@ python scripts/train_supervised_model.py \
 ### Simple Example: Linear Regression
 
 ```bash
-python scripts/train_supervised_model.py \
-    --model_module 'regression.linear_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques' \
-    --data_name 'train.csv' \
+python scripts/train_regression_model.py \
+    --model_module 'linear_regression' \
+    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
     --target_variable 'SalePrice' \
     --drop_columns 'Id' \
     --log_transform \
@@ -215,8 +215,8 @@ python scripts/train_supervised_model.py \
 ### Complexe Example: Linear Regression
 
 ```bash
-python scripts/train_supervised_model.py \
-    --model_module 'regression.linear_regression' \
+python scripts/train_regression_model.py \
+    --model_module 'linear_regression' \
     --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
     --target_variable 'SalePrice' \
     --drop_columns 'Id' \
@@ -233,10 +233,9 @@ python scripts/train_supervised_model.py \
 ### Simple Example: Ridge Regression
 
 ```bash
-python scripts/train_supervised_model.py \
-    --model_module 'regression.ridge_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques' \
-    --data_name 'train.csv' \
+python scripts/train_regression_model.py \
+    --model_module 'ridge_regression' \
+    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
     --target_variable 'SalePrice' \
     --drop_columns 'Id' \
     --log_transform \
