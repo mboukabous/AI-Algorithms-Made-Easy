@@ -37,7 +37,6 @@ Requirements:
 - Python 3.7 or higher
 - Required Python libraries specified in `requirements.txt`
 - Properly structured project with `train_regression_model.py` and model modules.
-
 """
 
 import gradio as gr
