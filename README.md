@@ -40,7 +40,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 *This project is currently under development. Stay tuned for updates!*
 
 ### Supervised Learning (Scikit-Learn)
-#### Regression ([Documentation](docs/Regression_Documentation.md), Notebook)
+#### Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), Notebook)
 - [Linear Regression](models/supervised/regression/linear_regression.py)
 - [Ridge Regression](models/supervised/regression/ridge_regression.py)
 - [Lasso Regression](models/supervised/regression/lasso_regression.py)
