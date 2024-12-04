@@ -256,7 +256,7 @@ python scripts/train_regression_model.py \
 
 The Gradio interface provides an easy and interactive way to train regression models without writing code or using the command line. It allows you to select models, configure parameters, upload data, and view results—all through a user-friendly web interface.
 
-![Interface](interfaces/gradio/train_regressor_gradio.png?raw=true "Interface")
+![Interface](/interfaces/gradio/train_regressor_gradio.png?raw=true "Interface")
 
 **Steps to Use the Gradio Interface**:
 
