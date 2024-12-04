@@ -256,16 +256,16 @@ python scripts/train_regression_model.py \
 
 The Gradio interface provides an easy and interactive way to train regression models without writing code or using the command line. It allows you to select models, configure parameters, upload data, and view results—all through a user-friendly web interface.
 
-### Steps to Use the Gradio Interface
+**Steps to Use the Gradio Interface**:
 
-**1. Launch the Interface**
+### Launch the Interface
 Run the following command in your terminal:
 ```bash
 python interfaces/gradio/train_regressor_gradio.py
 ```
 This will start the Gradio app and provide a local and global URLs. Open one of those URLs in your web browser to access the interface.
 
-**2. Select a Model and Configure Parameters**
+### Select a Model and Configure Parameters
 - **Select Model Module**: Choose the regression model you want to train from the dropdown menu (e.g., `linear_regression`, `random_forest_regressor`).
 - **Set Parameters**:
    - **Scoring Metric**: Specify the metric for evaluating the model (default is `neg_root_mean_squared_error`).
@@ -275,19 +275,19 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
    - **Log Transform Target Variable**: Check this if you want to apply a log transformation to the target variable.
    - **Generate Visualizations**: Enable this to create plots after training.
 
-**3. Provide Data Input**
+### Provide Data Input
 - **Upload Data File**:
    - Click "Upload CSV Data File" to upload your dataset.
 - **Download from Kaggle (if applicable)**:
    - Upload your kaggle.json file.
    - Enter the Kaggle competition name and data file name (e.g., train.csv).
 
-**4. Update Columns and Select Features**
+### Update Columns and Select Features
 - Click "**Update Columns**" to load the dataset's column names.
 - **Select Target Variable**: Choose the column that you want to predict.
 - **Columns to Drop**: Select any columns you want to exclude from the training.
 
-**5. Train the Model**
+### Train the Model
 - Click "Train Model" to start the training process.
 - The output section will display training logs and results.
 - If visualizations are enabled, plots like the actual vs. predicted values will be shown.
