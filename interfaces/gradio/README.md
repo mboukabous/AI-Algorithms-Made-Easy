@@ -10,7 +10,7 @@ This directory contains interactive Gradio interfaces for training machine learn
 
 ### `train_regressor_gradio.py`
 
-An interactive interface for training regression models with various algorithms and customizable configurations.
+An interactive interface for training regression models with various algorithms and customizable configurations - https://huggingface.co/spaces/mboukabous/train_regression
 
 #### Features
 
