@@ -292,11 +292,6 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
 - The output section will display training logs and results.
 - If visualizations are enabled, plots like the actual vs. predicted values will be shown.
 
-**Notes**
-- **Data Privacy**: Ensure your data does not contain sensitive information before uploading.
-- **Error Messages**: Any issues during training will be displayed in the output section.
-- **Environment**: The interface works best on a local machine. Some features may have limitations in cloud environments like Google Colab.
-
 ---
 
 ## 7. Common Issues and Troubleshooting
