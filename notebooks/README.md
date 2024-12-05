@@ -5,6 +5,7 @@ This folder contains Jupyter notebooks designed to demonstrate, experiment, and 
 ## Contents
 
 ### 1. [Train_Supervised_Regression_Models.ipynb](Train_Supervised_Regression_Models.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Regression_Models.ipynb)
 
 #### Overview
 This notebook focuses on training supervised regression models using Python and popular machine learning libraries. It is designed to guide users through the following steps:
