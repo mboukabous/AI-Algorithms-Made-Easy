@@ -131,7 +131,7 @@ def main(args):
     model_output_path = os.path.join(args.model_path, 'best_model.pkl')
     os.makedirs(args.model_path, exist_ok=True)
     joblib.dump(best_model, model_output_path)
-    print(f"Trained model saved to {os.path.join(MODEL_PATH, 'best_model.pkl')}")
+    print(f"Trained model saved to {model_output_path }")
 
     # Calculate metrics
     rmse = root_mean_squared_error(y_test_actual, y_pred)
