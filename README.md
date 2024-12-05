@@ -39,17 +39,41 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 
 *This project is currently under development. Stay tuned for updates!*
 
-### Supervised Learning
+### Supervised Learning (Scikit-Learn)
+#### Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), [Notebook](notebooks/Train_Supervised_Regression_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Regression_Models.ipynb))
+- [Linear Regression](models/supervised/regression/linear_regression.py)
+- [Ridge Regression](models/supervised/regression/ridge_regression.py)
+- [Lasso Regression](models/supervised/regression/lasso_regression.py)
+- [ElasticNet Regression](models/supervised/regression/elasticnet_regression.py)
+- [Decision Tree](models/supervised/regression/decision_tree_regressor.py)
+- [Random Forest (Bagging)](models/supervised/regression/random_forest_regressor.py)
+- [Gradient Boosting (Boosting)](models/supervised/regression/gradient_boosting_regressor.py)
+- [AdaBoost (Boosting)](models/supervised/regression/adaboost_regressor.py)
+- [XGBoost (Boosting)](models/supervised/regression/xgboost_regressor.py)
+- [LightGBM](models/supervised/regression/lightgbm_regressor.py)
+- [CatBoost](models/supervised/regression/catboost_regressor.py)
+- [Support Vector Regressor (SVR)](models/supervised/regression/support_vector_regressor.py)
+- [K-Nearest Neighbors (KNN) Regressor](models/supervised/regression/knn_regressor.py)
+- [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
+- [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
-- Linear Regression
+#### Classification
 - Logistic Regression
-- Decision Trees (DTs)
-- Random Forests (RF)
-- Support Vector Machines (SVM)
-- K-Nearest Neighbors (K-NN)
-- Gradient Boosting Machines (GBMs)
-- Multilayer Perceptrons (MLP)
-
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- AdaBoost
+- XGBoost
+- LightGBM
+- CatBoost
+- Support Vector Classifier (SVC)
+- K-Nearest Neighbors (KNN) Classifier
+- Extra Trees Classifier
+- Multilayer Perceptron (MLP) Classifier
+- Naive Bayes
+- Linear Discriminant Analysis (LDA)
+- Quadratic Discriminant Analysis (QDA)
+  
 ### Unsupervised Learning
 
 - K-Means Clustering
@@ -112,6 +136,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - **models/**: Contains all the AI algorithm implementations, organized by category.
 - **data/**: Includes datasets and data preprocessing utilities.
 - **utils/**: Utility scripts and helper functions.
+- **scripts/**: Executable scripts for training, testing, and other tasks.
 - **interfaces/**: Interactive applications using Gradio and web interfaces.
 - **notebooks/**: Jupyter notebooks for tutorials and demonstrations.
 - **deploy/**: Scripts and instructions for deploying models.
