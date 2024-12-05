@@ -40,8 +40,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 *This project is currently under development. Stay tuned for updates!*
 
 ### Supervised Learning (Scikit-Learn)
-notebooks/Train_Supervised_Regression_Models.ipynb
-#### Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), [Notebook](notebooks/Train_Supervised_Regression_Models.ipynb))
+#### Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), [Notebook](notebooks/Train_Supervised_Regression_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Regression_Models.ipynb))
 - [Linear Regression](models/supervised/regression/linear_regression.py)
 - [Ridge Regression](models/supervised/regression/ridge_regression.py)
 - [Lasso Regression](models/supervised/regression/lasso_regression.py)
