@@ -4,7 +4,7 @@ This directory contains executable scripts for training, testing, and other task
 
 ## Contents
 
-- [`train_regression_model.py`](#train_regression_model.py)
+- [`train_regression_model.py`](#train_regression_modelpy)
 - [`train_classification_model.py`](#train_classification_modelpy)
 
 ### `train_regression_model.py`
