@@ -94,6 +94,6 @@ python train_classification_model.py --model_module MODEL_MODULE \
 ```bash
 python train_classification_model.py --model_module logistic_regression \
     --data_path data/adult_income/train.csv \
-    --target_variable income_bracket --drop_columns Id \
+    --target_variable income_bracket \
     --scoring_metric accuracy --visualize
 ```
