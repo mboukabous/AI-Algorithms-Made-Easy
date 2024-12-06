@@ -59,18 +59,18 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 
 #### Classification
 - Logistic Regression
-- Decision Tree
-- Random Forest
-- Gradient Boosting
-- AdaBoost
-- XGBoost
-- LightGBM
-- CatBoost
+- Decision Tree Classifier
+- Random Forest Classifier (Bagging)
+- Extra Trees Classifier
+- Gradient Boosting Classifier (Boosting)
+- AdaBoost Classifier (Boosting)
+- XGBoost Classifier (Boosting)
+- LightGBM Classifier (Boosting)
+- CatBoost Classifier (Boosting)
 - Support Vector Classifier (SVC)
 - K-Nearest Neighbors (KNN) Classifier
-- Extra Trees Classifier
 - Multilayer Perceptron (MLP) Classifier
-- Naive Bayes
+- GaussianNB (Naive Bayes Classifier)
 - Linear Discriminant Analysis (LDA)
 - Quadratic Discriminant Analysis (QDA)
   
