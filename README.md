@@ -57,7 +57,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
 - [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
-#### Classification
+#### Classification ([Documentation](docs/Classification_Documentation.md))
 - Logistic Regression
 - Decision Tree Classifier
 - Random Forest Classifier (Bagging)
