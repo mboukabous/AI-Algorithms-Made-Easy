@@ -1,8 +1,9 @@
+
 """
 This script trains classification models using scikit-learn.
-It includes data loading, preprocessing, encoding of target variable,
-hyperparameter tuning, model evaluation, and saving of models, metrics,
-and visualizations.
+It handles data loading, preprocessing, hyperparameter tuning,
+model evaluation with classification metrics, and saving of models,
+metrics, and visualizations.
 
 Usage:
     python train_classification_model.py --model_module MODEL_MODULE --data_path DATA_PATH/DATA_NAME.csv
@@ -20,9 +21,9 @@ Optional arguments:
 
 Example:
     python train_classification_model.py --model_module logistic_regression
-                                         --data_path data/titanic/train.csv
-                                         --target_variable Survived --drop_columns PassengerId
-                                         --visualize
+                                         --data_path data/adult_income/train.csv
+                                         --target_variable income_bracket --drop_columns Id
+                                         --scoring_metric accuracy --visualize
 """
 
 import os
@@ -32,10 +33,12 @@ import importlib
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score,
                              confusion_matrix, ConfusionMatrixDisplay)
 import joblib
+from timeit import default_timer as timer
 
 def main(args):
     # Change to the root directory of the project
@@ -47,8 +50,8 @@ def main(args):
     from utils.supervised_hyperparameter_tuning import classification_hyperparameter_tuning
     model_module_path = f"models.supervised.classification.{args.model_module}"
     model_module = importlib.import_module(model_module_path)
-    
-    # Get the model estimator, parameters grid, and the scoring metric
+
+    # Get the model estimator, parameters grid, and scoring metric
     estimator = model_module.estimator
     param_grid = model_module.param_grid
     scoring_metric = args.scoring_metric or getattr(model_module, 'default_scoring', 'accuracy')
@@ -72,30 +75,57 @@ def main(args):
     X = df.drop(columns=[target_variable])
     y = df[target_variable]
 
-    # Ensure target variable is categorical
+    # Ensure target variable is not numeric (or at least, is categorical)
+    # It's fine if it's numeric labels for classes, but typically classification is categorical.
+    # We'll just run as is and rely on the estimator to handle it.
+    # If needed, we can print a note:
     if np.issubdtype(y.dtype, np.number) and len(np.unique(y)) > 20:
-        raise ValueError(f"The target variable '{target_variable}' seems to be continuous. Please ensure it's categorical for classification tasks.")
+        # Large number of unique values might indicate a regression-like problem
+        print(f"Warning: The target variable '{target_variable}' seems to have many unique numeric values. Ensure it's truly a classification problem.")
 
     # Encode target variable if not numeric
     if y.dtype == 'object' or not np.issubdtype(y.dtype, np.number):
         from sklearn.preprocessing import LabelEncoder
         le = LabelEncoder()
         y = le.fit_transform(y)
-        # Save label encoder for inverse transformation
+
+        # Save label encoder so that we can interpret predictions later
+        # Create model_path directory if not exists
+        os.makedirs(args.model_path, exist_ok=True)
         joblib.dump(le, os.path.join(args.model_path, 'label_encoder.pkl'))
+        print("LabelEncoder applied to target variable. Classes:", le.classes_)
 
     # Split the data
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=args.test_size, random_state=args.random_state, stratify=y)
+        X, y, test_size=args.test_size, random_state=args.random_state)
 
-    # Perform hyperparameter tuning
+    # Start the timer
+    start_time = timer()
+
+    # Perform hyperparameter tuning (classification)
     best_model, best_params = classification_hyperparameter_tuning(
         X_train, y_train, estimator, param_grid,
         cv=args.cv_folds, scoring=scoring_metric)
 
+    # End the timer and calculate how long it took
+    end_time = timer()
+    train_time = end_time - start_time
+
     # Evaluate the best model on the test set
     y_pred = best_model.predict(X_test)
-    y_test_actual = y_test
+
+    # Calculate classification metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, average='weighted', zero_division=0)
+    recall = recall_score(y_test, y_pred, average='weighted', zero_division=0)
+    f1 = f1_score(y_test, y_pred, average='weighted', zero_division=0)
+
+    print(f"\n{model_name} Classification Metrics on Test Set:")
+    print(f"- Accuracy: {accuracy:.4f}")
+    print(f"- Precision: {precision:.4f}")
+    print(f"- Recall: {recall:.4f}")
+    print(f"- F1 Score: {f1:.4f}")
+    print(f"- Training Time: {train_time:.4f} seconds")
 
     # Save the trained model
     model_output_path = os.path.join(args.model_path, 'best_model.pkl')
@@ -103,20 +133,14 @@ def main(args):
     joblib.dump(best_model, model_output_path)
     print(f"Trained model saved to {model_output_path}")
 
-    # Calculate metrics
-    accuracy = accuracy_score(y_test_actual, y_pred)
-    precision = precision_score(y_test_actual, y_pred, average='weighted', zero_division=0)
-    recall = recall_score(y_test_actual, y_pred, average='weighted', zero_division=0)
-    f1 = f1_score(y_test_actual, y_pred, average='weighted', zero_division=0)
-    print(f"\n{model_name} Classification Metrics on Test Set:")
-    print(f"- Accuracy: {accuracy:.4f}")
-    print(f"- Precision: {precision:.4f}")
-    print(f"- Recall: {recall:.4f}")
-    print(f"- F1 Score: {f1:.4f}")
-    # Save metrics
-    metrics = {'Accuracy': [accuracy], 'Precision': [precision], 'Recall': [recall], 'F1 Score': [f1]}
-
     # Save metrics to CSV
+    metrics = {
+        'Accuracy': [accuracy],
+        'Precision': [precision],
+        'Recall': [recall],
+        'F1 Score': [f1],
+        'train_time': [train_time]
+    }
     results_df = pd.DataFrame(metrics)
     results_df.to_csv(os.path.join(args.results_path, 'metrics.csv'), index=False)
     print(f"\nMetrics saved to {os.path.join(args.results_path, 'metrics.csv')}")
@@ -124,29 +148,23 @@ def main(args):
     if args.visualize:
         # Plot Classification Metrics
         plt.figure(figsize=(8, 6))
-        # Extract metrics and values
         metric_names = list(metrics.keys())
-        metric_values = [value[0] for value in metrics.values()]  # Extract the single value from each list
-
-        # Create bar chart
-        plt.bar(metric_names, metric_values, color='skyblue', alpha=0.8)
-        plt.ylim(0, 1)  # Metrics like accuracy, precision, etc., are between 0 and 1
+        metric_values = [value[0] for value in metrics.values() if value[0] is not None and isinstance(value[0], (int,float))]
+        plt.bar(metric_names[:-1], metric_values[:-1], color='skyblue', alpha=0.8)  # exclude train_time from plotting
+        plt.ylim(0, 1)
         plt.xlabel('Metrics')
         plt.ylabel('Scores')
         plt.title('Classification Metrics')
-
-        # Save and display the plot
         plt.savefig(os.path.join(args.results_path, 'classification_metrics.png'))
         plt.show()
         print(f"Visualization saved to {os.path.join(args.results_path, 'classification_metrics.png')}")
 
         # Display and save the confusion matrix
-        conf_matrix = confusion_matrix(y_test_actual, y_pred)
+        from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+        conf_matrix = confusion_matrix(y_test, y_pred)
         disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
-        disp.plot(cmap=plt.cm.Blues, values_format='d')  # Format as integers for counts
+        disp.plot(cmap=plt.cm.Blues, values_format='d')
         plt.title(f'{model_name} Confusion Matrix')
-
-        # Save the confusion matrix plot
         conf_matrix_path = os.path.join(args.results_path, 'confusion_matrix.png')
         plt.savefig(conf_matrix_path)
         plt.show()
@@ -161,7 +179,7 @@ if __name__ == "__main__":
     parser.add_argument('--data_path', type=str, required=True,
                         help='Path to the dataset file including data name.')
     parser.add_argument('--target_variable', type=str, required=True,
-                        help='Name of the target variable.')
+                        help='Name of the target variable (categorical).')
     parser.add_argument('--drop_columns', type=str, default='',
                         help='Columns to drop from the dataset.')
     # Model arguments
@@ -172,14 +190,14 @@ if __name__ == "__main__":
     parser.add_argument('--cv_folds', type=int, default=5,
                         help='Number of cross-validation folds.')
     parser.add_argument('--scoring_metric', type=str, default=None,
-                        help='Scoring metric for model evaluation.')
+                        help='Scoring metric for model evaluation (e.g., accuracy, f1, roc_auc).')
     # Output arguments
     parser.add_argument('--model_path', type=str, default=None,
                         help='Path to save the trained model.')
     parser.add_argument('--results_path', type=str, default=None,
                         help='Path to save results and metrics.')
     parser.add_argument('--visualize', action='store_true',
-                        help='Generate and save visualizations.')
+                        help='Generate and save visualizations (classification metrics chart and confusion matrix).')
 
     args = parser.parse_args()
     main(args)
