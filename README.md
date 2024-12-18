@@ -58,21 +58,21 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
 #### Classification ([Documentation](docs/Classification_Documentation.md))
-- Logistic Regression
-- Decision Tree Classifier
-- Random Forest Classifier (Bagging)
-- Extra Trees Classifier
-- Gradient Boosting Classifier (Boosting)
-- AdaBoost Classifier (Boosting)
-- XGBoost Classifier (Boosting)
-- LightGBM Classifier (Boosting)
-- CatBoost Classifier (Boosting)
-- Support Vector Classifier (SVC)
-- K-Nearest Neighbors (KNN) Classifier
-- Multilayer Perceptron (MLP) Classifier
-- GaussianNB (Naive Bayes Classifier)
-- Linear Discriminant Analysis (LDA)
-- Quadratic Discriminant Analysis (QDA)
+- [Logistic Regression](models/supervised/classification/logistic_regression.py)
+- [Decision Tree Classifier](models/supervised/classification/decision_tree_classifier.py)
+- [Random Forest Classifier (Bagging)](models/supervised/classification/random_forest_classifier.py)
+- [Extra Trees Classifier](models/supervised/classification/extra_trees_classifier.py)
+- [Gradient Boosting Classifier (Boosting)](models/supervised/classification/gradient_boosting_classifier.py)
+- [AdaBoost Classifier (Boosting)](models/supervised/classification/adaboost_classifier.py)
+- [XGBoost Classifier (Boosting)](models/supervised/classification/xgboost_classifier.py)
+- [LightGBM Classifier (Boosting)](models/supervised/classification/lightgbm_classifier.py)
+- [CatBoost Classifier (Boosting)](models/supervised/classification/catboost_classifier.py)
+- [Support Vector Classifier (SVC)](models/supervised/classification/svc.py)
+- [K-Nearest Neighbors (KNN) Classifier](models/supervised/classification/knn_classifier.py)
+- [Multilayer Perceptron (MLP) Classifier](models/supervised/classification/mlp_classifier.py)
+- [GaussianNB (Naive Bayes Classifier)](models/supervised/classification/gaussian_nb.py)
+- [Linear Discriminant Analysis (LDA)](models/supervised/classification/linear_discriminant_analysis.py)
+- [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
   
 ### Unsupervised Learning
 
