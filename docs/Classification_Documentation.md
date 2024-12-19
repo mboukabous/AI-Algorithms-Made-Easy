@@ -237,9 +237,9 @@ python scripts/train_classification_model.py \
 
 The Gradio interface provides an interactive way to train classification models without using the command line. It allows for easy model selection, parameter tuning, and data handling.
 
-https://huggingface.co/spaces/mboukabous/train_classification
+https://huggingface.co/spaces/mboukabous/train_classificator
 
-![Interface](/interfaces/gradio/train_classificator_gradio.png?raw=true "Interface")
+![Interface](/interfaces/gradio/img/train_classificator_gradio.png?raw=true "Interface")
 
 **Steps to Use the Gradio Interface**:
 
