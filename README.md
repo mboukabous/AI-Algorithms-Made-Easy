@@ -74,7 +74,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Linear Discriminant Analysis (LDA)](models/supervised/classification/linear_discriminant_analysis.py)
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
   
-### Unsupervised Learning
+### Unsupervised Learning (Scikit-Learn)
 #### 1. Clustering
 - K-Means
 - Hierarchical Clustering
