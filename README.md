@@ -57,7 +57,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
 - [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
-#### Classification ([Documentation](docs/Classification_Documentation.md))
+#### Classification ([Documentation](docs/Classification_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_classificator), [Notebook](notebooks/Train_Supervised_Classification_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Classification_Models.ipynb))
 - [Logistic Regression](models/supervised/classification/logistic_regression.py)
 - [Decision Tree Classifier](models/supervised/classification/decision_tree_classifier.py)
 - [Random Forest Classifier (Bagging)](models/supervised/classification/random_forest_classifier.py)
