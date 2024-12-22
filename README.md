@@ -75,13 +75,20 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
   
 ### Unsupervised Learning
-
-- K-Means Clustering
-- Principal Component Analysis (PCA)
+#### Clustering
+- K-Means
 - Hierarchical Clustering
-- Autoencoders
-- Isolation Forest
+- DBSCAN
 - Gaussian Mixture Models
+
+#### Dimensionality Reduction
+- Principal Component Analysis (PCA)
+- t-SNE
+- UMAP
+#### Anomaly (Outlier) Detection
+- Isolation Forest
+- One-Class SVM
+- K-Means Clustering
 
 ### Deep Learning (DL)
 
