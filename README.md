@@ -40,7 +40,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 *This project is currently under development. Stay tuned for updates!*
 
 ### Supervised Learning (Scikit-Learn)
-#### Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), [Notebook](notebooks/Train_Supervised_Regression_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Regression_Models.ipynb))
+#### 1. Regression ([Documentation](docs/Regression_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_regression), [Notebook](notebooks/Train_Supervised_Regression_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Regression_Models.ipynb))
 - [Linear Regression](models/supervised/regression/linear_regression.py)
 - [Ridge Regression](models/supervised/regression/ridge_regression.py)
 - [Lasso Regression](models/supervised/regression/lasso_regression.py)
@@ -57,7 +57,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
 - [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
-#### Classification ([Documentation](docs/Classification_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_classificator), [Notebook](notebooks/Train_Supervised_Classification_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Classification_Models.ipynb))
+#### 2. Classification ([Documentation](docs/Classification_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_classificator), [Notebook](notebooks/Train_Supervised_Classification_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Classification_Models.ipynb))
 - [Logistic Regression](models/supervised/classification/logistic_regression.py)
 - [Decision Tree Classifier](models/supervised/classification/decision_tree_classifier.py)
 - [Random Forest Classifier (Bagging)](models/supervised/classification/random_forest_classifier.py)
@@ -75,17 +75,17 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
   
 ### Unsupervised Learning
-#### Clustering
+#### 1. Clustering
 - K-Means
 - Hierarchical Clustering
 - DBSCAN
 - Gaussian Mixture Models
 
-#### Dimensionality Reduction
+#### 2. Dimensionality Reduction
 - Principal Component Analysis (PCA)
 - t-SNE
 - UMAP
-#### Anomaly (Outlier) Detection
+#### 3. Anomaly (Outlier) Detection
 - Isolation Forest
 - One-Class SVM
 - K-Means Clustering
