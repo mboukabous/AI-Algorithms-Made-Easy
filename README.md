@@ -57,22 +57,22 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Extra Trees Regressor](models/supervised/regression/extra_trees_regressor.py)
 - [Multilayer Perceptron (MLP) Regressor](models/supervised/regression/mlp_regressor.py)
 
-#### Classification
-- Logistic Regression
-- Decision Tree
-- Random Forest
-- Gradient Boosting
-- AdaBoost
-- XGBoost
-- LightGBM
-- CatBoost
-- Support Vector Classifier (SVC)
-- K-Nearest Neighbors (KNN) Classifier
-- Extra Trees Classifier
-- Multilayer Perceptron (MLP) Classifier
-- Naive Bayes
-- Linear Discriminant Analysis (LDA)
-- Quadratic Discriminant Analysis (QDA)
+#### Classification ([Documentation](docs/Classification_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_classificator), [Notebook](notebooks/Train_Supervised_Classification_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Classification_Models.ipynb))
+- [Logistic Regression](models/supervised/classification/logistic_regression.py)
+- [Decision Tree Classifier](models/supervised/classification/decision_tree_classifier.py)
+- [Random Forest Classifier (Bagging)](models/supervised/classification/random_forest_classifier.py)
+- [Extra Trees Classifier](models/supervised/classification/extra_trees_classifier.py)
+- [Gradient Boosting Classifier (Boosting)](models/supervised/classification/gradient_boosting_classifier.py)
+- [AdaBoost Classifier (Boosting)](models/supervised/classification/adaboost_classifier.py)
+- [XGBoost Classifier (Boosting)](models/supervised/classification/xgboost_classifier.py)
+- [LightGBM Classifier (Boosting)](models/supervised/classification/lightgbm_classifier.py)
+- [CatBoost Classifier (Boosting)](models/supervised/classification/catboost_classifier.py)
+- [Support Vector Classifier (SVC)](models/supervised/classification/svc.py)
+- [K-Nearest Neighbors (KNN) Classifier](models/supervised/classification/knn_classifier.py)
+- [Multilayer Perceptron (MLP) Classifier](models/supervised/classification/mlp_classifier.py)
+- [GaussianNB (Naive Bayes Classifier)](models/supervised/classification/gaussian_nb.py)
+- [Linear Discriminant Analysis (LDA)](models/supervised/classification/linear_discriminant_analysis.py)
+- [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
   
 ### Unsupervised Learning
 

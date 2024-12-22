@@ -1,17 +1,18 @@
-# Machine Learning Regression Models Documentation
+# Machine Learning Classification Models Documentation
 
 ## 1. Introduction
 
-Welcome to the **Machine Learning Regression Models Documentation**! This guide provides detailed instructions on how to use various regression algorithms implemented in Python using scikit-learn and other popular libraries. The scripts are designed to be flexible and reusable, allowing you to train and evaluate different models on your dataset.
+Welcome to the **Machine Learning Classification Models Documentation**! This guide provides step-by-step instructions on how to use various classification algorithms implemented in Python using scikit-learn and other popular libraries. The scripts are designed to be flexible and reusable, allowing you to train and evaluate different models on your dataset for both binary and multi-class classification tasks.
 
 **Key Features:**
 
-- Modular design with separate scripts for each model.
+- Modular design with separate scripts for each classification model.
 - Hyperparameter tuning using `GridSearchCV`.
 - Preprocessing pipelines for numerical and categorical data.
-- Support for external libraries like XGBoost, LightGBM, and CatBoost.
-- Visualization of results and metrics.
+- Support for well-known libraries (XGBoost, LightGBM, CatBoost) in addition to scikit-learn built-ins.
+- Visualization of classification results and metrics (e.g., confusion matrix).
 - Utility scripts for data download and preparation.
+- Gradio interface for interactive model training and evaluation.
 
 ---
 
@@ -21,7 +22,7 @@ Welcome to the **Machine Learning Regression Models Documentation**! This guide 
 
 - **Python 3.7 or higher**
 - **pip** package manager
-- **Kaggle API credentials** (`kaggle.json` file): if you want to use datasets from Kaggle.
+- **Kaggle API credentials** (`kaggle.json` file) if you want to download datasets from Kaggle.
 
 ### Required Libraries
 
@@ -62,27 +63,27 @@ project_root/
 │       └── kaggle_data.py
 ├── interfaces/
 │   └── gradio/
-│       └── train_regressor_gradio.py
+│       └── train_classificator_gradio.py
 ├── models/
 │   └── supervised/
-│       └── regression/
-│           ├── linear_regression.py
-│           ├── ridge_regression.py
-│           ├── lasso_regression.py
-│           ├── elasticnet_regression.py
-│           ├── decision_tree_regressor.py
-│           ├── random_forest_regressor.py
-│           ├── gradient_boosting_regressor.py
-│           ├── adaboost_regressor.py
-│           ├── xgboost_regressor.py
-│           ├── lightgbm_regressor.py
-│           ├── catboost_regressor.py
-│           ├── support_vector_regressor.py
-│           ├── knn_regressor.py
-│           ├── extra_trees_regressor.py
-│           └── mlp_regressor.py
+│       └── classification/
+│           ├── logistic_regression.py
+│           ├── decision_tree_classifier.py
+│           ├── random_forest_classifier.py
+│           ├── extra_trees_classifier.py
+│           ├── gradient_boosting_classifier.py
+│           ├── adaboost_classifier.py
+│           ├── xgboost_classifier.py
+│           ├── lightgbm_classifier.py
+│           ├── catboost_classifier.py
+│           ├── svc.py
+│           ├── knn_classifier.py
+│           ├── mlp_classifier.py
+│           ├── gaussian_nb.py
+│           ├── linear_discriminant_analysis.py
+│           └── quadratic_discriminant_analysis.py
 ├── scripts/
-│   └── train_regression_model.py
+│   └── train_classification_model.py
 ├── utils/
 │   └── supervised_hyperparameter_tuning.py
 ├── saved_models/
@@ -98,13 +99,15 @@ project_root/
 ### Dataset Requirements
 
 - The dataset should be in **CSV format**.
-- It should include a **target variable** for regression.
+- It should include a **target variable** for classification.
+- The target variable can be **binary** (two classes) or **multi-class** (more than two classes).
 - Features can be a mix of **numerical** and **categorical** data.
 - Ensure there are **no missing target values**.
 
-### Example Dataset
+### Example Datasets
 
-We'll use the **House Prices** dataset from Kaggle as an example. You can download it using the provided script.
+- **Binary Classification**: The **Adult Income** dataset (predicting whether income > 50K) is a real-world scenario that includes both numerical and categorical features.
+- **Multi-Class Classification**: The **Otto Group Product Classification** dataset is a popular multi-class problem, allowing you to demonstrate multi-class metrics and performance.
 
 ### Downloading the Dataset
 
@@ -125,7 +128,7 @@ To download the dataset using the Kaggle API, you need to have a Kaggle account 
    from data.datasets.kaggle_data import get_kaggle_data
 
    JSON_KAGGLE_PATH = "/path/to/your/kaggle.json"  # Update this path
-   DATA_NAME = "house-prices-advanced-regression-techniques"
+   DATA_NAME = "otto-group-product-classification-challenge"
 
    competition_path = get_kaggle_data(JSON_KAGGLE_PATH, DATA_NAME, is_competition=True)
    print(f"Dataset is available at: {competition_path}")
@@ -155,94 +158,72 @@ To download the dataset using the Kaggle API, you need to have a Kaggle account 
 
 ## 4. Model Training and Evaluation
 
-The main script for training models is `scripts/train_regression_model.py`. It handles:
+The main script for training models is `scripts/train_classification_model.py`. It handles:
 
 - Data loading and preprocessing.
-- Optional log transformation of the target variable.
 - Hyperparameter tuning using `GridSearchCV`.
-- Model evaluation and metrics calculation.
+- Model evaluation using classification metrics (Accuracy, Precision, Recall, F1-score).
 - Saving trained models and results.
-- Visualization of results.
+- Visualization of metrics and confusion matrices if specified.
 
 ### Running the Training Script
 
 Use the following command to train a model:
 
 ```bash
-python scripts/train_regression_model.py \
-    --model_module 'linear_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
-    --target_variable 'SalePrice' \
-    --drop_columns 'Id' \
+python scripts/train_classification_model.py \
+    --model_module 'logistic_regression' \
+    --data_path 'data/raw/adult-income-dataset/adult.csv' \
+    --target_variable 'income' \
     --test_size 0.2 \
     --random_state 42 \
-    --log_transform \
     --cv_folds 5 \
-    --scoring_metric 'neg_root_mean_squared_error' \
-    --model_path 'saved_models/LinearRegression' \
-    --results_path 'results/LinearRegression' \
+    --scoring_metric 'accuracy' \
+    --model_path 'saved_models/LogisticRegression' \
+    --results_path 'results/LogisticRegression' \
     --visualize
 ```
 
 **Required Command-Line Arguments:**
-- `--model_module`: Name of the model module to import (e.g., `linear_regression`).
+- `--model_module`: Name of the classification model module to import (e.g., `logistic_regression`).
 - `--data_path`: Path to the dataset directory, including the data file name.
-- `--target_variable`: Name of the target variable in your dataset.
+- `--target_variable`: Name of the target variable in your dataset (categorical).
 
 **Optional Command-Line Arguments:**
 - `--test_size`: Proportion of the dataset to include in the test split (default: `0.2`).
 - `--random_state`: Random seed for reproducibility (default: `42`).
-- `--log_transform`: Apply log transformation to the target variable (regression only).
 - `--cv_folds`: Number of cross-validation folds (default: `5`).
-- `--scoring_metric`: Scoring metric for model evaluation (e.g., `neg_root_mean_squared_error`, `accuracy`).
-- `--model_path`: Path to save the trained model (e.g., `saved_models/LinearRegression`).
-- `--results_path`: Path to save results and metrics (e.g., `results/LinearRegression`).
-- `--visualize`: Generate and save visualizations (e.g., actual vs. predicted plots for regression).
+- `--scoring_metric`: Metric for evaluation (e.g., `accuracy`, `f1`, `f1_macro`, `roc_auc`).
+- `--model_path`: Path to save the trained model (e.g., `saved_models/LogisticRegression`).
+- `--results_path`: Path to save results and metrics (e.g., `results/LogisticRegression`).
+- `--visualize`: Generate and save classification metrics chart and confusion matrix.
 - `--drop_columns`: Comma-separated column names to drop from the dataset (optional).
+
+### Multi-Class vs. Binary Classification
+The same script and pipeline handle both binary and multi-class classification. Simply choose a dataset with the appropriate target variable and, if desired, specify a multi-class-friendly metric like `f1_macro`.
 
 ---
 
 ## 5. Usage Examples
 
-### Simple Example: Linear Regression
+### Binary Classification Example: Logistic Regression
 
 ```bash
-python scripts/train_regression_model.py \
-    --model_module 'linear_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
-    --target_variable 'SalePrice' \
-    --drop_columns 'Id' \
-    --log_transform \
+python scripts/train_classification_model.py \
+    --model_module 'logistic_regression' \
+    --data_path 'data/raw/adult-income-dataset/adult.csv' \
+    --target_variable 'income' \
     --visualize
 ```
 
-### Complexe Example: Linear Regression
+### Multi-Class Classification Example: Random Forest
 
 ```bash
-python scripts/train_regression_model.py \
-    --model_module 'linear_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
-    --target_variable 'SalePrice' \
-    --drop_columns 'Id' \
-    --log_transform \
-    --test_size 0.20 \
-    --random_state 42 \
-    --cv_folds 5 \
-    --scoring_metric 'neg_mean_absolute_error' \
-    --model_path 'saved_models/LinearRegression' \
-    --results_path 'results/LinearRegression' \
-    --visualize
-```
-
-### Simple Example: Ridge Regression
-
-```bash
-python scripts/train_regression_model.py \
-    --model_module 'ridge_regression' \
-    --data_path 'data/raw/house-prices-advanced-regression-techniques/train.csv' \
-    --target_variable 'SalePrice' \
-    --drop_columns 'Id' \
-    --log_transform \
+python scripts/train_classification_model.py \
+    --model_module 'random_forest_classifier' \
+    --data_path 'data/raw/otto-group-product-classification-challenge/train.csv' \
+    --target_variable 'target' \
+    --drop_columns 'id' \
     --visualize
 ```
 
@@ -254,28 +235,29 @@ python scripts/train_regression_model.py \
 
 ### Introduction
 
-The Gradio interface provides an easy and interactive way to train regression models without writing code or using the command line. It allows you to select models, configure parameters, upload data, and view results—all through a user-friendly web interface - https://huggingface.co/spaces/mboukabous/train_regression
+The Gradio interface provides an interactive way to train classification models without using the command line. It allows for easy model selection, parameter tuning, and data handling.
 
-![Interface](/interfaces/gradio//img/train_regressor_gradio.png?raw=true "Interface")
+https://huggingface.co/spaces/mboukabous/train_classificator
+
+![Interface](/interfaces/gradio/img/train_classificator_gradio.png?raw=true "Interface")
 
 **Steps to Use the Gradio Interface**:
 
 ### Launch the Interface
 Run the following command in your terminal:
 ```bash
-python interfaces/gradio/train_regressor_gradio.py
+python interfaces/gradio/train_classificator_gradio.py
 ```
 This will start the Gradio app and provide a local and global URLs. Open one of those URLs in your web browser to access the interface.
 
 ### Select a Model and Configure Parameters
-- **Select Model Module**: Choose the regression model you want to train from the dropdown menu (e.g., `linear_regression`, `random_forest_regressor`).
+- **Select Model Module**: Choose a classification model from the dropdown (e.g., `logistic_regression`, `random_forest_classifier`).
 - **Set Parameters**:
-   - **Scoring Metric**: Specify the metric for evaluating the model (default is `neg_root_mean_squared_error`).
+   - **Scoring Metric**: Specify the metric for evaluating the model (default is `accuracy`).
    - **Test Size**: Adjust the proportion of data used for testing.
    - **Random State**: Set a seed for reproducibility.
    - **CV Folds**: Choose the number of cross-validation folds.
-   - **Log Transform Target Variable**: Check this if you want to apply a log transformation to the target variable.
-   - **Generate Visualizations**: Enable this to create plots after training.
+   - **Generate Visualizations**: Enable this to get metrics charts and confusion matrices.
 
 ### Provide Data Input
 - **Upload Data File**:
@@ -292,7 +274,7 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
 ### Train the Model
 - Click "Train Model" to start the training process.
 - The output section will display training logs and results.
-- If visualizations are enabled, plots like the actual vs. predicted values will be shown.
+- If visualizations are enabled, a confusion matrix and a classification metrics bar chart are shown.
 
 ---
 
@@ -300,18 +282,14 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
 
 ### Convergence Warnings
 
-- **Cause:** Some models (e.g., Lasso, ElasticNet, MLP) may not converge within the default number of iterations.
+- **Cause:** Some models may not converge within the default number of iterations.
 - **Solution:** Increase `max_iter` in the hyperparameter grid.
 
-### Solver Compatibility Issues
+### Metrics and Multi-class Tasks
 
-- **Cause:** Certain solvers (e.g., 'svd', 'cholesky' in Ridge Regression) may not support sparse data.
-- **Solution:** Set `sparse_output=False` in `OneHotEncoder` to output dense arrays.
-
-### Feature Scaling
-
-- **Important for:** SVR, KNN, MLP.
-- **Solution:** Ensure `StandardScaler` is used in the preprocessing pipeline.
+- **Cause:** Multi-class classification requires metrics that account for multiple classes (e.g., `f1_macro` or `f1_weighted`).
+- **Solution:** Use appropriate metrics like `f1_macro` for balanced datasets or `f1_weighted` for imbalanced datasets.
+- **Note:** Ensure the target variable has more than two unique classes when performing multi-class classification to avoid misconfiguration.
 
 ### External Libraries Not Installed
 
@@ -321,11 +299,6 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
   ```bash
   pip install xgboost lightgbm catboost
   ```
-
-### Handling Categorical Features
-
-- **CatBoost:** Handles categorical features natively.
-- **Solution:** Adjust preprocessing pipeline to exclude one-hot encoding when using CatBoost.
 
 ### Resource Limitations
 
@@ -340,7 +313,7 @@ This will start the Gradio app and provide a local and global URLs. Open one of 
 
 ## 8. Conclusion
 
-This documentation provides a comprehensive guide to using various regression algorithms with your machine learning scripts. By following the instructions and understanding the special considerations for each model, you can effectively train and evaluate models on your dataset.
+This documentation guides you through using a flexible, modular system for training classification models. By following these steps, you can easily experiment with different models, hyperparameters, and datasets—both binary and multi-class.
 
 Feel free to experiment with different models and hyperparameters to find the best fit for your data.
 
