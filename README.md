@@ -76,19 +76,20 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
   
 ### Unsupervised Learning (Scikit-Learn)
 #### 1. Clustering
-- K-Means
-- Hierarchical Clustering
-- DBSCAN
-- Gaussian Mixture Models
+- [K-Means](models/unsupervised/clustering/kmeans.py)
+- [Hierarchical Clustering](models/unsupervised/clustering/hierarchical_clustering.py)
+- [DBSCAN](models/unsupervised/clustering/dbscan.py)
+- [Gaussian Mixture Models](models/unsupervised/clustering/gaussian_mixture.py)
 
 #### 2. Dimensionality Reduction
-- Principal Component Analysis (PCA)
-- t-SNE
-- UMAP
+- [Principal Component Analysis (PCA)](models/unsupervised/dimred/pca.py)
+- [t-SNE](models/unsupervised/dimred/tsne.py)
+- [UMAP](models/unsupervised/dimred/umap.py)
+  
 #### 3. Anomaly (Outlier) Detection
-- Isolation Forest
-- One-Class SVM
-- K-Means Clustering
+- [Isolation Forest](models/unsupervised/anomaly/isolation_forest.py)
+- [One-Class SVM](models/unsupervised/anomaly/one_class_svm.py)
+- [Local Outlier Factor (LOF)](models/unsupervised/anomaly/local_outlier_factor.py)
 
 ### Deep Learning (DL)
 
