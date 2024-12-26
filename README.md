@@ -77,9 +77,9 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 ### Unsupervised Learning (Scikit-Learn)
 #### 1. Clustering
 - [K-Means](models/unsupervised/clustering/kmeans.py)
-- [Hierarchical Clustering](models/unsupervised/clustering/hierarchical_clustering.py)
 - [DBSCAN](models/unsupervised/clustering/dbscan.py)
-- [Gaussian Mixture Models](models/unsupervised/clustering/gaussian_mixture.py)
+- [Gaussian Mixture](models/unsupervised/clustering/gaussian_mixture.py)
+- [Hierarchical Clustering](models/unsupervised/clustering/hierarchical_clustering.py)
 
 #### 2. Dimensionality Reduction
 - [Principal Component Analysis (PCA)](models/unsupervised/dimred/pca.py)
