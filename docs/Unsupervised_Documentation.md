@@ -272,7 +272,104 @@ python scripts/train_anomaly_detection.py \
 
 ---
 
-## 8. Disclaimers and Notes
+## 8. Training Models Using the Gradio Interface
+
+### Introduction
+
+The **Unsupervised Gradio Interface** provides an easy, interactive way to run **clustering**, **dimensionality reduction**, or **anomaly detection** tasks—without manually typing commands or modifying scripts. It combines all three unsupervised tasks into one web-based application, letting you:
+
+- Select a **task** (Clustering, Dimensionality Reduction, or Anomaly Detection).
+- Pick a **model** (e.g., `kmeans`, `pca`, or `isolation_forest`).
+- Upload or specify a **dataset** (local path, Kaggle download, or direct file upload).
+- Choose **columns** to drop or keep.
+- (Optionally) visualize the 2D or 3D results.
+
+https://huggingface.co/spaces/mboukabous/train_unsupervised
+
+![Interface](/interfaces/gradio//img/train_unsupervised_gradio.png?raw=true "Interface")
+
+### Launch the Interface
+
+Run the following command in your terminal (adjusting the path if needed):
+
+```bash
+python interfaces/gradio/unsupervised_gradio.py
+```
+
+This starts the Gradio app, which will output a local and global URL in your terminal. Open one of those URLs in your browser to access the interface.
+
+### Selecting a Task and Model
+
+Upon launching, you’ll see **three tabs**:
+
+1. **Clustering**
+2. **Dimensionality Reduction**
+3. **Anomaly Detection**
+
+Each tab has:
+- A **Model Module** dropdown listing the relevant algorithms found in `models/unsupervised/<task_type>/`.
+- **Data Input** options:
+  - **Upload Data File**: Directly upload a local CSV.
+  - **Provide Data Path**: Type the path to a CSV on your machine.
+  - **Download from Kaggle**: Provide `kaggle.json` and competition/dataset info to fetch data automatically.
+- Buttons or fields to **drop** or **select** columns.
+
+### Updating Columns and Configuring Parameters
+
+After choosing how to load your data and clicking "**Update Columns**," the script will parse your CSV and display its columns. You can:
+
+- **Columns to Drop**: Exclude columns you don’t want from the training.
+- **Columns to Keep**: If you only want specific columns, select them here; otherwise, leave it empty to keep all.
+
+Some tasks may also have optional toggles like **`Visualize 2D (using PCA if needed)`**. If checked, the script will perform a 2D scatter plot (and color code clusters or outliers as relevant).
+
+### Training the Model
+
+Click the "**Train `<Task>`**" button (where `<Task>` is Clustering, Dimensionality Reduction, or Anomaly Detection). The interface will:
+
+1. Build and run the corresponding script (e.g., `train_clustering_model.py`).
+2. Show logs in the "**Logs / Output**" box, including any hyperparameter results or silhouette scores (if clustering).
+3. If **visualization** is enabled and 2D output is meaningful (or a 2D PCA projection is used), a **scatter plot** is displayed under "**Plot Output**."
+
+### Example Usage: Clustering (KMeans)
+
+1. In the **Clustering** tab:
+   - **Select Model Module**: `kmeans`.
+   - **Upload** or **Provide** the Mall Customers CSV.
+   - **Update Columns** to see `Annual Income (k$)`, `Spending Score (1-100)`, etc.
+   - **Drop/Keep** the relevant columns, e.g., dropping `CustomerID` or `Gender`.
+   - Check **Visualize 2D** if you want to see a PCA-based cluster scatter.
+   - Click **Train Clustering**.
+
+   Logs appear in the output box, and if visualization is on, you’ll see a 2D scatter color-coded by cluster.
+
+### Example Usage: Dimensionality Reduction (PCA)
+
+1. In the **Dimensionality Reduction** tab:
+   - **Select Model Module**: `pca`.
+   - Provide or upload a numeric dataset (e.g., Breast Cancer).
+   - **Update Columns** to label-encode or drop ID columns.
+   - **Train Dimensionality Reduction**: The logs show the progress, and if 2D or 3D, a scatter plot of the components appears.
+
+### Example Usage: Anomaly Detection (Isolation Forest)
+
+1. In the **Anomaly Detection** tab:
+   - **Select Model Module**: `isolation_forest`.
+   - Upload or provide your dataset (like a credit card transactions CSV).
+   - **Update Columns** and optionally drop irrelevant columns.
+   - Check **Visualize 2D** to see outliers (colored red) in a 2D PCA projection.
+   - **Train Anomaly Detection**.
+
+   The logs show how many outliers were detected. A 2D scatter plot with outliers in red is displayed if applicable.
+
+**Tips**:
+- For **large datasets**, you may face memory or performance issues with certain algorithms (like t-SNE or DBSCAN). Consider sampling or limiting the columns.
+- If your data has **missing values**, ensure you handle them (dropping, imputing) so the script doesn’t fail.
+- **Hyperparameter Tuning** for clustering can happen if your `train_clustering_model.py` uses a silhouette-based approach, but the interface doesn’t currently expose those specific numeric fields. You could expand the interface to let users choose `n_clusters`, `eps`, etc.
+
+---
+
+## 9. Disclaimers and Notes
 
 ### Large Datasets
 
@@ -294,7 +391,7 @@ python scripts/train_anomaly_detection.py \
 
 ---
 
-## 9. Conclusion
+## 10. Conclusion
 
 This documentation outlines how to run **unsupervised learning** tasks—**clustering**, **dimensionality reduction**, and **anomaly detection**—using the provided scripts:
 
