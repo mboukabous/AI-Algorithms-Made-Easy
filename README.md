@@ -74,7 +74,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Linear Discriminant Analysis (LDA)](models/supervised/classification/linear_discriminant_analysis.py)
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
 
-### ([Unsupervised Learning (Scikit-Learn)](docs/Unsupervised_Documentation.md)
+### [Unsupervised Learning (Scikit-Learn)](docs/Unsupervised_Documentation.md)
 #### 1. Clustering
 - [K-Means](models/unsupervised/clustering/kmeans.py)
 - [DBSCAN](models/unsupervised/clustering/dbscan.py)
