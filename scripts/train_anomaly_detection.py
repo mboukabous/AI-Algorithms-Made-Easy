@@ -43,9 +43,16 @@ def main(args):
 
     # Prepare results directory
     if args.results_path is None:
+        # e.g., 'results/IsolationForest_Anomaly'
         args.results_path = os.path.join("results", f"{estimator.__class__.__name__}_Anomaly")
     os.makedirs(args.results_path, exist_ok=True)
 
+    # Prepare model directory
+    if args.model_path is None:
+        # e.g., 'saved_model/IsolationForest_Anomaly'
+        args.model_path = os.path.join('saved_models', f"{estimator.__class__.__name__}_Anomaly")
+    os.makedirs(args.model_path, exist_ok=True)
+    
     # Load data
     df = pd.read_csv(args.data_path)
     print(f"Data loaded from {args.data_path}, initial shape: {df.shape}")
@@ -85,7 +92,6 @@ def main(args):
 
     # Save the model
     model_output_path = os.path.join(args.model_path, "anomaly_model.pkl")
-    os.makedirs(args.model_path, exist_ok=True)
     joblib.dump(estimator, model_output_path)
     print(f"Model saved to {model_output_path}")
 
@@ -149,7 +155,7 @@ if __name__ == "__main__":
                         help='Name of the anomaly detection model (e.g. isolation_forest, one_class_svm).')
     parser.add_argument('--data_path', type=str, required=True,
                         help='Path to the CSV dataset file.')
-    parser.add_argument('--model_path', type=str, default='saved_models/Anomaly',
+    parser.add_argument('--model_path', type=str, default=None,
                         help='Path to save the trained model.')
     parser.add_argument('--results_path', type=str, default=None,
                         help='Directory to save results (predictions, plots).')

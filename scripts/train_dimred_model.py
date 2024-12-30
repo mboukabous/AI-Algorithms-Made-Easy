@@ -47,6 +47,12 @@ def main(args):
         # e.g., 'results/PCA_DimRed'
         args.results_path = os.path.join('results', f"{estimator.__class__.__name__}_DimRed")
     os.makedirs(args.results_path, exist_ok=True)
+    
+    # Prepare model directory
+    if args.model_path is None:
+        # e.g., 'saved_model/PCA_DimRed'
+        args.model_path = os.path.join('saved_models', f"{estimator.__class__.__name__}_DimRed")
+    os.makedirs(args.model_path, exist_ok=True)
 
     # Load data from CSV
     df = pd.read_csv(args.data_path)
@@ -90,7 +96,6 @@ def main(args):
 
     # Save the model
     model_output_path = os.path.join(args.model_path, "dimred_model.pkl")
-    os.makedirs(args.model_path, exist_ok=True)  # ensure directory
     joblib.dump(estimator, model_output_path)
     print(f"Model saved to {model_output_path}")
 
@@ -135,7 +140,7 @@ if __name__ == "__main__":
                         help='Name of the dimred model module (e.g. pca, tsne, umap).')
     parser.add_argument('--data_path', type=str, required=True,
                         help='Path to the CSV dataset file.')
-    parser.add_argument('--model_path', type=str, default='saved_models/DimRed',
+    parser.add_argument('--model_path', type=str, default=None,
                         help='Where to save the fitted model.')
     parser.add_argument('--results_path', type=str, default=None,
                         help='Directory to store results (transformed data, plots).')
