@@ -94,13 +94,18 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 
 ### Deep Learning (DL)
 
-- Convolutional Neural Networks (CNN)
-- Recurrent Neural Networks (RNN)
-- Long Short-Term Memory Networks (LSTM)
+#### 1. Multilayer Perceptron (MLP)
+#### 2. Convolutional Neural Networks (CNN)
+#### 3. Recurrent Neural Networks (RNNs)
+- Recurrent Neural Network (RNN)
+- Long Short-Term Memory (LSTM)
 - Gated Recurrent Unit (GRU)
-- Generative Adversarial Networks (GAN)
-- Transformers
+#### 4. Attention Mechanisms
 - Attention Mechanisms
+- Transformers
+#### 5. Generative Models
+- Generative Adversarial Networks (GANs)
+- Variational Autoencoders (VAEs)
 
 ### Computer Vision
 
