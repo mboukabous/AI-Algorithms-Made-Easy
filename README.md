@@ -73,22 +73,24 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [GaussianNB (Naive Bayes Classifier)](models/supervised/classification/gaussian_nb.py)
 - [Linear Discriminant Analysis (LDA)](models/supervised/classification/linear_discriminant_analysis.py)
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
-  
-### Unsupervised Learning (Scikit-Learn)
+
+ 
+### Unsupervised Learning (Scikit-Learn) ([Documentation](docs/Unsupervised_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_unsupervised), [Notebook](notebooks/Train_Unsupervised_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Unsupervised_Models.ipynb))
 #### 1. Clustering
-- K-Means
-- Hierarchical Clustering
-- DBSCAN
-- Gaussian Mixture Models
+- [K-Means](models/unsupervised/clustering/kmeans.py)
+- [DBSCAN](models/unsupervised/clustering/dbscan.py)
+- [Gaussian Mixture](models/unsupervised/clustering/gaussian_mixture.py)
+- [Hierarchical Clustering](models/unsupervised/clustering/hierarchical_clustering.py)
 
 #### 2. Dimensionality Reduction
-- Principal Component Analysis (PCA)
-- t-SNE
-- UMAP
+- [Principal Component Analysis (PCA)](models/unsupervised/dimred/pca.py)
+- [t-SNE](models/unsupervised/dimred/tsne.py)
+- [UMAP](models/unsupervised/dimred/umap.py)
+  
 #### 3. Anomaly (Outlier) Detection
-- Isolation Forest
-- One-Class SVM
-- K-Means Clustering
+- [Isolation Forest](models/unsupervised/anomaly/isolation_forest.py)
+- [One-Class SVM](models/unsupervised/anomaly/one_class_svm.py)
+- [Local Outlier Factor (LOF)](models/unsupervised/anomaly/local_outlier_factor.py)
 
 ### Deep Learning (DL)
 
