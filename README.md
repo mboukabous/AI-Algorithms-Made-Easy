@@ -75,7 +75,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [Quadratic Discriminant Analysis (QDA)](models/supervised/classification/quadratic_discriminant_analysis.py)
 
  
-### Unsupervised Learning (Scikit-Learn) ([Documentation](docs/Unsupervised_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_unsupervised))
+### Unsupervised Learning (Scikit-Learn) ([Documentation](docs/Unsupervised_Documentation.md), [Interface](https://huggingface.co/spaces/mboukabous/train_unsupervised), [Notebook](notebooks/Train_Unsupervised_Models.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Unsupervised_Models.ipynb))
 #### 1. Clustering
 - [K-Means](models/unsupervised/clustering/kmeans.py)
 - [DBSCAN](models/unsupervised/clustering/dbscan.py)

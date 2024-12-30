@@ -19,7 +19,6 @@ from sklearn import datasets
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-import seaborn as sns
 from timeit import default_timer as timer
 
 def main(args):
@@ -94,7 +93,7 @@ def main(args):
         print(f"Training time (no tuning): {end_time - start_time:.2f}s")
 
     # Ensure the model is fitted at this point
-    model_output_path = os.path.join(args.results_path, "best_model.pkl")
+    model_output_path = os.path.join(args.model_path, "best_model.pkl")
     os.makedirs(args.model_path, exist_ok=True)  # ensure directory exists
     joblib.dump(estimator, model_output_path)
     print(f"Model saved to {model_output_path}")

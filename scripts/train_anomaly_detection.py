@@ -84,7 +84,7 @@ def main(args):
     print(f"Anomaly detection training with {args.model_module} completed in {train_time:.2f} seconds.")
 
     # Save the model
-    model_output_path = os.path.join(args.results_path, "anomaly_model.pkl")
+    model_output_path = os.path.join(args.model_path, "anomaly_model.pkl")
     os.makedirs(args.model_path, exist_ok=True)
     joblib.dump(estimator, model_output_path)
     print(f"Model saved to {model_output_path}")

@@ -89,7 +89,7 @@ def main(args):
     print(f"Dimensionality reduction done using {args.model_module}. Output shape: {X_transformed.shape}")
 
     # Save the model
-    model_output_path = os.path.join(args.results_path, "dimred_model.pkl")
+    model_output_path = os.path.join(args.model_path, "dimred_model.pkl")
     os.makedirs(args.model_path, exist_ok=True)  # ensure directory
     joblib.dump(estimator, model_output_path)
     print(f"Model saved to {model_output_path}")
