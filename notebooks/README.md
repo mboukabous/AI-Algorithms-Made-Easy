@@ -35,28 +35,83 @@ This notebook focuses on training supervised regression models using Python and 
      - Multilayer Perceptron (MLP) Regressor
 
 4. **Hyperparameter Tuning**:
-   - Demonstrates the use of `GridSearchCV` for efficient hyperparameter optimization.
+   - Demonstrates the use of GridSearchCV for efficient hyperparameter optimization.
 
 5. **Results**:
    - Saving trained models, metrics, and other outputs for further analysis.
 
-#### Key Features
-- **Stand-Alone Sections**: 
-  Each section can be executed independently, allowing flexibility in workflow.
-- **Interactive Learning**: 
-  Contains markdown cells with detailed explanations, making it beginner-friendly.
-- **Scalable Pipelines**:
-  Shows how to create robust preprocessing and modeling pipelines using `scikit-learn`.
+---
 
-#### Usage
-1. Open the notebook in a Jupyter environment or Google Colab.
-2. Follow the instructions in each section to train and evaluate regression models.
-3. Customize the code as needed for your specific dataset and modeling requirements.
+### 2. [Train_Supervised_Classification_Models.ipynb](Train_Supervised_Classification_Models.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Supervised_Classification_Models.ipynb)
+
+#### Overview
+This notebook provides an in-depth guide to training supervised classification models. The workflow includes:
+
+1. **Dataset Management**:
+   - How to use pre-existing classification datasets from Kaggle or your own custom dataset.
+
+2. **Preprocessing**:
+   - Handling imbalanced data, encoding categorical features, and scaling numerical features.
+
+3. **Model Training**:
+   - Training popular classification models, including:
+     - Logistic Regression
+     - Decision Tree Classifier
+     - Random Forest Classifier
+     - Gradient Boosting (Boosting)
+     - AdaBoost Classifier (Boosting)
+     - XGBoost Classifier (Boosting)
+     - LightGBM Classifier
+     - CatBoost Classifier
+     - Support Vector Classifier (SVC)
+     - K-Nearest Neighbors (KNN) Classifier
+     - Extra Trees Classifier
+     - Multilayer Perceptron (MLP) Classifier
+     - GaussianNB (Naive Bayes Classifier)
+     - Linear Discriminant Analysis (LDA)
+     - Quadratic Discriminant Analysis (QDA)
+
+4. **Hyperparameter Tuning**:
+   - Shows how to use GridSearchCV for hyperparameter tuning to optimize model performance.
+
+5. **Results and Evaluation**:
+   - Metrics such as accuracy, precision, recall, F1-score, and confusion matrix are visualized for easy interpretation.
+
+---
+
+### 3. [Train_Unsupervised_Models.ipynb](Train_Unsupervised_Models.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mboukabous/AI-Algorithms-Made-Easy/blob/main/notebooks/Train_Unsupervised_Models.ipynb)
+
+#### Overview
+This notebook focuses on unsupervised learning workflows for clustering, dimensionality reduction, and anomaly detection. Steps include:
+
+1. **Clustering**:
+   - Explore various clustering algorithms such as:
+     - KMeans
+     - DBSCAN
+     - Gaussian Mixture Models
+     - Agglomerative Clustering
+
+2. **Dimensionality Reduction**:
+   - Reduce the dimensionality of high-dimensional datasets using:
+     - PCA
+     - t-SNE
+     - UMAP
+
+3. **Anomaly Detection**:
+   - Identify outliers and anomalies using:
+     - Isolation Forest
+     - One-Class SVM
+     - Local Outlier Factor (LOF)
+
+4. **Evaluation**:
+   - Use metrics like silhouette score for clustering and visualization for dimensionality reduction and anomaly detection.
 
 ---
 
 ## Contributing
-Feel free to contribute additional notebooks to this directory! Whether it's for classification, clustering, or advanced regression techniques, all contributions are welcome.
+Feel free to contribute additional notebooks to this directory! Whether it's for advanced classification techniques, deep learning, or feature engineering, all contributions are welcome.
 
 ## License
 This project is licensed under the MIT License.
