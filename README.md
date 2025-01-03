@@ -92,56 +92,71 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [One-Class SVM](models/unsupervised/anomaly/one_class_svm.py)
 - [Local Outlier Factor (LOF)](models/unsupervised/anomaly/local_outlier_factor.py)
 
-### Deep Learning (DL)
-
-#### 1. Multilayer Perceptron (MLP)
-#### 2. Convolutional Neural Networks (CNN)
-#### 3. Recurrent Neural Networks (RNNs)
-- Recurrent Neural Network (RNN)
-- Long Short-Term Memory (LSTM)
-- Gated Recurrent Unit (GRU)
-#### 4. Attention Mechanisms
-- Attention Mechanisms
-- Transformers
-#### 5. Generative Models
-- Generative Adversarial Networks (GANs)
-- Variational Autoencoders (VAEs)
-
 ### Computer Vision
+#### 1. Image Classification
+- Convolutional Neural Networks (CNN)
+- Example CNN Architecture: TinyVGG (from [CNN Explainer](https://poloclub.github.io/cnn-explainer/))
+- Transfer Learning (using [TorchVision](https://pytorch.org/vision/stable/models.html#table-of-all-available-classification-weights))
+  
+#### 2. Object Detection
+- Faster R-CNN
+- YOLO (You Only Look Once)
+- SSD (Single Shot MultiBox Detector)
 
-- Image Classification/Transfer learning (TL)
-- Object Detection
-- Semantic Segmentation
-- Style Transfer
-- Image Captioning
-- Generative Models
+#### 3. Semantic Segmentation
+- U-Net
+- DeepLab
+- PSPNet
+
+#### 4. Style Transfer
+
+#### 5. Image Captioning
+- CNN + RNN approach (or CNN + Transformer)
+- Potential integration with NLP techniques
+
+#### 6. Generative Models (Vision)
+- DCGAN (Deep Convolutional Generative Adversarial Networks)
+- StyleGAN
+- Diffusion Models
 
 ### Natural Language Processing (NLP)
+#### 1. Sequence Models
+- RNN (Vanilla Recurrent Neural Network)
+- LSTM (Long Short-Term Memory)
+- GRU (Gated Recurrent Unit)
 
-- Sentiment Analysis (SA)
+#### 2. Transformers
+- Encoder-Decoder models (e.g., BERT, GPT, etc.)
+- Attention Mechanisms
+
+#### 3. Core NLP Tasks
+- Text Classification (sentiment analysis, topic classification)
 - Machine Translation
 - Named Entity Recognition (NER)
-- Text Classification
-- Text Summarization
+- Text Summarization (extractive or abstractive)
 - Question Answering
-- Language Modeling
-- Transformer Models
+- Language Modeling (causal or masked)
+
+#### 4. Generative Models (Text)
+- Seq2Seq with attention
+- GPT-like for text generation
 
 ### Time Series Analysis
-  
 - Time Series Forecasting with RNNs
-- Temporal Convolutional Networks (TCNs)
+- Temporal Convolutional Networks (TCN)
 - Transformers for Time Series
 
 ### Reinforcement Learning
-
-- Q-Learning
-- Deep Q-Networks (DQN)
-- Policy Gradients
-- Actor-Critic Methods
-- Proximal Policy Optimization
-
-### and more ...
+#### 1. Value-Based Methods
+Q-Learning
+Deep Q-Networks (DQN)
+#### 2. Policy-Based Methods
+REINFORCE (Policy Gradients)
+Actor-Critic (A2C, PPO, etc.)
+#### 3. Advanced RL Topics
+Hierarchical RL
+Multi-Agent RL
+Offline RL (Batch RL)
 
 ---
 
