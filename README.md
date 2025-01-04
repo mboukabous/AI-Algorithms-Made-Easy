@@ -119,6 +119,13 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - StyleGAN
 - Diffusion Models
 
+#### 7. Self-Supervised Learning
+- SimCLR (Simple Framework for Contrastive Learning of Visual Representations)
+- BYOL (Bootstrap Your Own Latent)
+- SwAV (Swapping Assignments Between Views)
+- DINO (Self-Distillation with No Labels)
+- CLIP (Contrastive Language–Image Pre-training)
+
 ### Natural Language Processing (NLP)
 #### 1. Sequence Models
 - RNN (Vanilla Recurrent Neural Network)
