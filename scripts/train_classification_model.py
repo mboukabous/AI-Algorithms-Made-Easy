@@ -160,14 +160,40 @@ def main(args):
 
         # Display and save the confusion matrix
         from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-        conf_matrix = confusion_matrix(y_test, y_pred)
-        disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
-        disp.plot(cmap=plt.cm.Blues, values_format='d')
-        plt.title(f'{model_name} Confusion Matrix')
-        conf_matrix_path = os.path.join(args.results_path, 'confusion_matrix.png')
-        plt.savefig(conf_matrix_path)
+        
+        # Load the label encoder (if it exists)
+        label_encoder_path = os.path.join(args.model_path, "label_encoder.pkl")
+        if os.path.exists(label_encoder_path):
+            label_encoder = joblib.load(label_encoder_path)
+            # Decode the predicted and true labels
+            y_test_decoded = label_encoder.inverse_transform(y_val)
+            y_pred_decoded = label_encoder.inverse_transform(y_pred)
+            display_labels = label_encoder.classes_
+        else:
+            # If no encoder, use the original numeric labels
+            y_test_decoded = y_test
+            y_pred_decoded = y_pred
+            display_labels = None  # Numeric labels will be used by default
+        
+        # Save confusion matrix
+        conf_mat = confusion_matrix(y_test_decoded, y_pred_decoded)
+        plt.figure(figsize=(10, 8))  # Increased figure size for better spacing
+        disp = ConfusionMatrixDisplay(conf_mat, display_labels=display_labels)
+
+        # Customize the plot
+        disp.plot(cmap="Blues", values_format="d", ax=plt.gca())
+        plt.title("Confusion Matrix", fontsize=16, pad=20)  # Increased font size and added padding
+        plt.xticks(rotation=45, ha="right", fontsize=12)  # Rotated x-axis labels and increased font size
+        plt.yticks(fontsize=12)  # Increased font size for y-axis labels
+        plt.xlabel("Predicted Label", fontsize=14)  # Added font size for x-axis label
+        plt.ylabel("True Label", fontsize=14)  # Added font size for y-axis label
+
+        # Save the improved plot
+        cm_path = os.path.join(args.results_path, "confusion_matrix.png")
+        plt.savefig(cm_path, bbox_inches="tight")  # Ensures no clipping of labels
         plt.show()
-        print(f"Confusion matrix saved to {conf_matrix_path}")
+
+        print(f"Confusion matrix saved to {cm_path}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a classification model.")
