@@ -178,8 +178,7 @@ Offline RL (Batch RL)
 - **deploy/**: Scripts and instructions for deploying models.
 - **website/**: Files related to the project website.
 - **docs/**: Project documentation.
-- **examples/**: Example scripts demonstrating how to use the models.
-
+  
 ---
 
 ## Installation
