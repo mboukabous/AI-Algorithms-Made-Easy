@@ -166,7 +166,7 @@ def main(args):
         if os.path.exists(label_encoder_path):
             label_encoder = joblib.load(label_encoder_path)
             # Decode the predicted and true labels
-            y_test_decoded = label_encoder.inverse_transform(y_val)
+            y_test_decoded = label_encoder.inverse_transform(y_test)
             y_pred_decoded = label_encoder.inverse_transform(y_pred)
             display_labels = label_encoder.classes_
         else:
