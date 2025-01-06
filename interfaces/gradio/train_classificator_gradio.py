@@ -37,7 +37,7 @@ import re
 
 # Add the project root directory to the Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, '../../'))
+project_root = os.path.abspath(os.path.join(current_dir, '../../../'))
 sys.path.append(project_root)
 
 def get_classification_model_modules():
