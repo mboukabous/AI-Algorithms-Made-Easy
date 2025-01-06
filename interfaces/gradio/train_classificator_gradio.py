@@ -37,7 +37,7 @@ import re
 
 # Add the project root directory to the Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_dir, '../../../'))
+project_root = os.path.abspath(os.path.join(current_dir, '../../'))
 sys.path.append(project_root)
 
 def get_classification_model_modules():
@@ -92,7 +92,7 @@ def train_model(model_module, data_option, data_file, data_path, data_name_kaggl
         return "Invalid data option selected.", None
 
     # Prepare command-line arguments for train_classification_model.py
-    cmd = [sys.executable, os.path.join(project_root, 'scripts', 'train_classification_model.py')]
+    cmd = [sys.executable, os.path.join(project_root, 'scripts/supervised', 'train_classification_model.py')]
     cmd.extend(['--model_module', model_module])
     cmd.extend(['--data_path', data_path])
     cmd.extend(['--target_variable', target_variable])
