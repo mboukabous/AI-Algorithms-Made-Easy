@@ -305,7 +305,7 @@ with gr.Blocks() as demo:
     create_task_tab(
         task_name="Clustering",
         model_modules=clustering_modules,
-        script_path="scripts/supervised/train_clustering_model.py"
+        script_path="scripts/unsupervised/train_clustering_model.py"
     )
 
     # 2) Dimensionality Reduction Tab
@@ -313,7 +313,7 @@ with gr.Blocks() as demo:
     create_task_tab(
         task_name="Dimensionality Reduction",
         model_modules=dimred_modules,
-        script_path="scripts/supervised/train_dimred_model.py"
+        script_path="scripts/unsupervised/train_dimred_model.py"
     )
 
     # 3) Anomaly Detection Tab
@@ -321,7 +321,7 @@ with gr.Blocks() as demo:
     create_task_tab(
         task_name="Anomaly Detection",
         model_modules=anomaly_modules,
-        script_path="scripts/supervised/train_anomaly_detection.py"
+        script_path="scripts/unsupervised/train_anomaly_detection.py"
     )
 
 if __name__ == "__main__":
