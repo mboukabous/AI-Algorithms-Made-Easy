@@ -23,7 +23,7 @@ from timeit import default_timer as timer
 
 def main(args):
     # Change to the project root if needed
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
     os.chdir(project_root)
     sys.path.insert(0, project_root)
 
