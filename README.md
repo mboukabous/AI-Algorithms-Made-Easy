@@ -92,7 +92,7 @@ Our mission is to simplify the learning process and provide hands-on tools to ex
 - [One-Class SVM](models/unsupervised/anomaly/one_class_svm.py)
 - [Local Outlier Factor (LOF)](models/unsupervised/anomaly/local_outlier_factor.py)
 
-### Computer Vision
+### Computer Vision (PyTorch)
 #### 1. Image Classification
 - Convolutional Neural Networks (CNN)
 - Example CNN Architecture: TinyVGG (from [CNN Explainer](https://poloclub.github.io/cnn-explainer/))
